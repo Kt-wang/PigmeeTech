@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - RecipeRainbowPigmeeCycle (1.12.2)
+ * Pigmee Tech - RecipeRainbowPigmeeCycle (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.recipe.RainbowPigmeeColorCycleRecipe.
  *
  * 一只彩虹猪咪 + 一件可染色物品 → 该物品的下一色（16 色循环）。

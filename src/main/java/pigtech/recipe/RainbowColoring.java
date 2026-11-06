@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - RainbowColoring (1.12.2)
+ * Pigmee Tech - RainbowColoring (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.recipe.RainbowPigmeeColoring.
  *
  * 彩虹猪咪的染色引擎：把一件物品推进到 MC 16 色的下一色，绝不无中生有。
@@ -24,6 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraft.init.Items;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
@@ -32,12 +33,14 @@ import net.minecraftforge.oredict.OreDictionary;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class RainbowColoring {
 
@@ -138,7 +141,7 @@ public final class RainbowColoring {
     private static volatile Map<Item, Variant> uncolored;
 
     /** 注册名族的查询缓存（含否定结果）；合成匹配每键变化都会调用，必须便宜 */
-    private static final Map<Item, Variant> ID_FAMILY_CACHE = new java.util.concurrent.ConcurrentHashMap<>();
+    private static final Map<Item, Variant> ID_FAMILY_CACHE = new ConcurrentHashMap<>();
     private static final Variant NO_FAMILY = new Variant(new ItemStack[0], null);
 
     /** 完整解析：有色（metadata 族 / 注册名族）→ 无色基底（配方反推） */
@@ -220,7 +223,7 @@ public final class RainbowColoring {
             Item found = null;
             for (String name : idNames(color)) {
                 found = ForgeRegistries.ITEMS.getValue(new ResourceLocation(namespace, prefix + name + suffix));
-                if (found != null && found != net.minecraft.init.Items.AIR) {
+                if (found != null && found != Items.AIR) {
                     break;
                 }
                 found = null;
@@ -319,11 +322,11 @@ public final class RainbowColoring {
             }
         }
         ambiguous.forEach(result::remove);
-        return java.util.Collections.unmodifiableMap(result);
+        return Collections.unmodifiableMap(result);
     }
 
     private static boolean isDye(ItemStack stack, EnumDyeColor color) {
-        if (stack.getItem() == net.minecraft.init.Items.DYE) {
+        if (stack.getItem() == Items.DYE) {
             return EnumDyeColor.byDyeDamage(stack.getMetadata()) == color;
         }
         for (int oreId : OreDictionary.getOreIDs(stack)) {

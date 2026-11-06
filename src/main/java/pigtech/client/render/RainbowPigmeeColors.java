@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - RainbowPigmeeColors (1.12.2)
+ * Pigmee Tech - RainbowPigmeeColors (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.client.render.RainbowPigmeeColors.
  *
  * 纯客户端变色，无需服务端 tick / 方块更新：
@@ -8,7 +8,7 @@
  * 1.12.2 适配：IBlockColor/IItemColor 只在模型面声明了 tintindex 时生效，
  * 方块/物品模型面已补回源码模型自带的 "tintindex": 0。
  * 世界内渲染走 FumoTESR → BlockModelRenderer，同样消费 BlockColors。
- * （源码的自定义 shader 流动色带属于 1.17+ 渲染管线，不移植。）
+ * 这里的整体变色是 shader 不可用时的降级路径；色带 shader 见 RainbowPigmeeShader。
  */
 package pigtech.client.render;
 

@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - ConnectionPredicate (1.12.2)
+ * Pigmee Tech - ConnectionPredicate (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.client.ctm.ConnectionPredicate.
  */
 package pigtech.client.ctm;

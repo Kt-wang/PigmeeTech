@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - TileFumo (1.12.2)
+ * Pigmee Tech - TileFumo (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.blockentity.FumoBlockEntity.
  *
  * 保存旋转开关状态（NBT + 数据包同步），客户端每 tick 推进旋转角。

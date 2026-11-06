@@ -1,11 +1,11 @@
 /*
- * AE2 Crystal Science - ConnectedTextureBakedModel (1.12.2)
+ * Pigmee Tech - ConnectedTextureBakedModel (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.client.ctm.ConnectedTextureBakedModel.
  *
  * 通用连纹烘焙模型（Mekanism 风格 compact CTM）。
  * 1.12.2 适配：连接数据由方块 getExtendedState 计算并经 IUnlistedProperty
- * 随 IExtendedBlockState 传入（对应源码的 ModelData 通道）；无数据（物品、
- * 谓词未激活）时回退为整面 base 贴图。
+ * 随 IExtendedBlockState 传入（对应源码的 ModelData 通道）；无数据（物品渲染）
+ * 时回退为整面 base 贴图。
  */
 package pigtech.client.ctm;
 
@@ -25,21 +25,12 @@ import java.util.List;
 
 public class ConnectedTextureBakedModel implements IBakedModel {
 
-    private static final EnumFacing[] DIRECTIONS = EnumFacing.VALUES;
-
     protected final TextureAtlasSprite baseSprite;
     protected final TextureAtlasSprite ctmSprite;
-    private final ConnectionPredicate predicate;
 
-    public ConnectedTextureBakedModel(TextureAtlasSprite baseSprite, TextureAtlasSprite ctmSprite,
-                                      ConnectionPredicate predicate) {
+    public ConnectedTextureBakedModel(TextureAtlasSprite baseSprite, TextureAtlasSprite ctmSprite) {
         this.baseSprite = baseSprite;
         this.ctmSprite = ctmSprite;
-        this.predicate = predicate;
-    }
-
-    protected ConnectionPredicate getPredicate() {
-        return predicate;
     }
 
     @Override

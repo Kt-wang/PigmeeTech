@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - PigmeeFumoGiftHandler (1.12.2)
+ * Pigmee Tech - PigmeeFumoGiftHandler (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.event.PigmeeFumoGiftHandler.
  *
  * 玩家首次进服赠送一只猪咪：优先放入快捷栏，其次背包，满了则掉落在脚边

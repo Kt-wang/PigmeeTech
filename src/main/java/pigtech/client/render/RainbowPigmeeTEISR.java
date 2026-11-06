@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - RainbowPigmeeTEISR (1.12.2)
+ * Pigmee Tech - RainbowPigmeeTEISR (1.12.2)
  * Port of ae2lt 1.21.1 client/render/HyperdimensionalPigmeeItemRenderer（彩虹分支）。
  *
  * 彩虹猪咪的物品形态渲染：与方块形态共用 RainbowPigmeeSurface 的两个通道

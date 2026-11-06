@@ -1,42 +1,4 @@
 
-# Items
-# Pure Crystals (17 types)
-# Crystal Seeds (17 types)
-# Dusts
-# Tools - Ender
-
-# JEI
-
-# API - Machine Settings
-
-# API - Side Policy
-
-# API - Relative Side
-
-# API - Direction
-
-# GUI - Ender Broadcaster
-
-# GUI - Ender Emitter
-
-# 新增物品
-
-# 储存方块
-
-# GUI - 广播装置子菜单
-
-# 消息 - 频段链接
-
-# 消息 - 末影连接器
-
-# 消息 - 镜像/谐振供应器
-
-# 工具链接提示
-
-# Resonating Drive (placeholder)
-
-# Resonating Drive Settings
-
 # Pigmee Fumo（猪咪玩偶，移植自 ae2lt）
 itemGroup.pigtech.pigmee=猪咪科技
 tile.pigmee_fumo.name=猪咪
@@ -126,17 +88,8 @@ tile.black_pigmee_building_slab.name=黑色猪咪素板台阶
 tile.black_pigmee_framed_building_slab.name=黑色猪咪框板台阶
 item.dye_base.name=染料基底
 
-# --- 谐振样板（右键标记 / 滚轮选槽）---
-
-# --- 谐振链接器绑定 ---
-
-# --- 谐振记忆卡（9 槽） ---
-
-# --- 谐振样板 tooltip ---
-
 # 16 色猪咪
 # 颜色名称
-item.pigmee_fumo_colored.name=彩色猪咪
 tile.pigmee_fumo_colored.name=彩色猪咪
 pigtech.fumo.colored_name=%s猪咪
 pigtech.fumo.color.white=白色

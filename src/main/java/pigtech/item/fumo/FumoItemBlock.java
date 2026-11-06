@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - FumoItemBlock (1.12.2)
+ * Pigmee Tech - FumoItemBlock (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.item.FumoBlockItem.
  *
  * 猪咪玩偶物品：4 行 tooltip（前 3 灰、末行淡紫），可戴在头上。

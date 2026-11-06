@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - RainbowPigmeeSurface (1.12.2)
+ * Pigmee Tech - RainbowPigmeeSurface (1.12.2)
  * Port of ae2lt 1.21.1 client/render/RainbowPigmeeSurfaceLayer +
  * HyperdimensionalPigmeeTextureLayer（彩虹猪咪与超维猪咪共用的面部标记层）。
  *
@@ -18,12 +18,15 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.client.renderer.vertex.VertexFormat;
+import net.minecraft.client.renderer.vertex.VertexFormatElement;
 import net.minecraft.util.EnumFacing;
 import org.lwjgl.opengl.GL11;
 
@@ -42,9 +45,9 @@ public final class RainbowPigmeeSurface {
             .addElement(DefaultVertexFormats.POSITION_3F)
             .addElement(DefaultVertexFormats.COLOR_4UB)
             .addElement(DefaultVertexFormats.TEX_2F)
-            .addElement(new net.minecraft.client.renderer.vertex.VertexFormatElement(1,
-                    net.minecraft.client.renderer.vertex.VertexFormatElement.EnumType.FLOAT,
-                    net.minecraft.client.renderer.vertex.VertexFormatElement.EnumUsage.UV, 2));
+            .addElement(new VertexFormatElement(1,
+                    VertexFormatElement.EnumType.FLOAT,
+                    VertexFormatElement.EnumUsage.UV, 2));
 
     private static final float SURFACE_OFFSET = 0.002F;
     private static final float MARKING_OFFSET = 0.004F;
@@ -137,8 +140,7 @@ public final class RainbowPigmeeSurface {
         }
         putMarkingQuads(buffer, model.getQuads(state, null, MODEL_SEED));
         // ITEM 格式不带逐顶点光照，显式把光照贴图坐标设为全亮（对齐源码的自发光标记）
-        net.minecraft.client.renderer.OpenGlHelper.setLightmapTextureCoords(
-                net.minecraft.client.renderer.OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
+        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
         tessellator.draw();
         GlStateManager.disableAlpha();
     }
@@ -175,8 +177,7 @@ public final class RainbowPigmeeSurface {
             putTintedQuads(buffer, model.getQuads(state, side, MODEL_SEED), tint);
         }
         putTintedQuads(buffer, model.getQuads(state, null, MODEL_SEED), tint);
-        net.minecraft.client.renderer.OpenGlHelper.setLightmapTextureCoords(
-                net.minecraft.client.renderer.OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
+        OpenGlHelper.setLightmapTextureCoords(OpenGlHelper.lightmapTexUnit, 240.0F, 240.0F);
         tessellator.draw();
     }
 
@@ -199,7 +200,7 @@ public final class RainbowPigmeeSurface {
         if (baseSprite != null) {
             return;
         }
-        net.minecraft.client.renderer.texture.TextureMap map = Minecraft.getMinecraft().getTextureMapBlocks();
+        TextureMap map = Minecraft.getMinecraft().getTextureMapBlocks();
         baseSprite = map.getAtlasSprite(Tags.MOD_ID + ":block/pigmee_fumo");
         markingSprite = map.getAtlasSprite(Tags.MOD_ID + ":block/rainbow_pigmee_fumo_overlay");
     }

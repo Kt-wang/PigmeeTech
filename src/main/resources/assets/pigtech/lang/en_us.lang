@@ -1,36 +1,4 @@
 
-# Items
-# Pure Crystals (17 types)
-# Crystal Seeds (17 types)
-# Dusts
-# Tools - Ender
-
-# JEI
-
-# API - Machine Settings
-
-# API - Side Policy
-
-# API - Relative Side
-
-# API - Direction
-
-
-
-# GUI - Broadcaster sub-menus
-
-# Messages - Band linking
-
-# Messages - Ender linker
-
-# Messages - Mirror / Resonating provider
-
-# Tool Linking Tooltips
-
-# Resonating Drive (placeholder)
-
-# Resonating Drive Settings
-
 # Pigmee Fumo (ported from ae2lt)
 itemGroup.pigtech.pigmee=Pigmee Tech
 tile.pigmee_fumo.name=Pigmee Fumo
@@ -120,17 +88,8 @@ tile.black_pigmee_building_slab.name=Black Pigmee Plain Slab
 tile.black_pigmee_framed_building_slab.name=Black Pigmee Framed Slab
 item.dye_base.name=Dye Base
 
-# --- Resonating pattern (right-click marking / scroll selection) ---
-
-# --- Resonating linker binding ---
-
-# --- Resonating memory card (9 slots) ---
-
-# --- Resonating pattern tooltip ---
-
 # 16 色猪咪
 # Color names
-item.pigmee_fumo_colored.name=Colored Pigmee
 tile.pigmee_fumo_colored.name=Colored Pigmee
 pigtech.fumo.colored_name=%s Pigmee
 pigtech.fumo.color.white=White

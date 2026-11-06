@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - PigmeeCtm (1.12.2)
+ * Pigmee Tech - PigmeeCtm (1.12.2)
  * 猪咪建材 CTM 装配：未列入属性定义、CTM 贴图缝合、ModelBakeEvent 模型替换。
  *
  * 1.12.2 与源码（1.21.1 几何加载器）的机制差异：
@@ -82,7 +82,7 @@ public final class PigmeeCtm {
                 // 板材：整方块 CTM，同色跨素/框互连
                 event.getModelRegistry().putObject(
                         new ModelResourceLocation(Tags.MOD_ID + ":" + name, "normal"),
-                        new ConnectedTextureBakedModel(base, ctm, ConnectionPredicates.PIGMEE_SAME_COLOR));
+                        new ConnectedTextureBakedModel(base, ctm));
 
                 // 台阶：同块同半值共面连接（沿用板材贴图），bottom/top/double 三个形态
                 String slabSuffix = framed ? "_pigmee_framed_building_slab" : "_pigmee_building_slab";

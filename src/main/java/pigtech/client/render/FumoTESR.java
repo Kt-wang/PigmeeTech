@@ -1,10 +1,9 @@
 /*
- * AE2 Crystal Science - FumoTESR (1.12.2)
+ * Pigmee Tech - FumoTESR (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.client.FumoBlockRenderer.
  *
  * 世界内渲染：从 BlockRendererDispatcher 取方块 baked model 手工 tessellate。
  * 旋转时先把朝向重置为 NORTH，再绕方块中心 Y 轴旋转（与源码一致）。
- * 渲染流程对齐本包 EnderEmitterTESR 已验证的模式。
  */
 package pigtech.client.render;
 

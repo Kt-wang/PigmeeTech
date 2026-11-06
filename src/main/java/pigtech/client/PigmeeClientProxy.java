@@ -13,13 +13,13 @@ import pigtech.client.render.model.SpinningFumoBakedModel;
 import pigtech.init.PigmeeBlocks;
 import pigtech.tile.fumo.TileFumo;
 
-import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelBakeEvent;
+import net.minecraftforge.client.model.BakedModelWrapper;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -52,18 +52,6 @@ public class PigmeeClientProxy extends CommonProxy {
 
     @SubscribeEvent
     public void onModelRegistry(ModelRegistryEvent event) {
-        // 方块物品模型
-        for (Block block : ForgeRegistries.BLOCKS.getValuesCollection()) {
-            ResourceLocation rl = block.getRegistryName();
-            if (rl != null && rl.toString().startsWith(Tags.MOD_ID + ":")) {
-                Item item = Item.getItemFromBlock(block);
-                if (item == null || item == net.minecraft.init.Items.AIR) {
-                    continue;
-                }
-                ModelLoader.setCustomModelResourceLocation(item, 0,
-                    new ModelResourceLocation(rl, "inventory"));
-            }
-        }
         // 16 色猪咪：每个 metadata 都要注册同一个 inventory 模型
         Item coloredFumo = Item.getItemFromBlock(PigmeeBlocks.PIGMEE_FUMO_COLORED);
         ModelResourceLocation coloredMrl = new ModelResourceLocation(Tags.MOD_ID + ":pigmee_fumo_colored", "inventory");
@@ -71,7 +59,7 @@ public class PigmeeClientProxy extends CommonProxy {
             ModelLoader.setCustomModelResourceLocation(coloredFumo, meta, coloredMrl);
         }
 
-        // 独立物品模型（dye_base）
+        // 其余全部模型（方块物品与独立物品如 dye_base）：逐个物品用自身注册名注册
         for (Item item : ForgeRegistries.ITEMS.getValuesCollection()) {
             ResourceLocation rl = item.getRegistryName();
             if (rl != null && rl.toString().startsWith(Tags.MOD_ID + ":")) {
@@ -100,7 +88,7 @@ public class PigmeeClientProxy extends CommonProxy {
         IBakedModel rainbowOriginal = event.getModelRegistry().getObject(rainbowMrl);
         if (rainbowOriginal != null) {
             event.getModelRegistry().putObject(rainbowMrl,
-                new net.minecraftforge.client.model.BakedModelWrapper<IBakedModel>(rainbowOriginal) {
+                new BakedModelWrapper<IBakedModel>(rainbowOriginal) {
                     @Override
                     public boolean isBuiltInRenderer() {
                         return true;

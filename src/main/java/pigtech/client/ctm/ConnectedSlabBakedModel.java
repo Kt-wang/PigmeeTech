@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - ConnectedSlabBakedModel (1.12.2)
+ * Pigmee Tech - ConnectedSlabBakedModel (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.client.ctm.ConnectedSlabBakedModel.
  *
  * 同一套 CTM 表面映射到台阶上；内凹面（半砖的切平面）放在无 cullface 的
@@ -14,6 +14,7 @@ import net.minecraft.util.EnumFacing;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public final class ConnectedSlabBakedModel extends ConnectedTextureBakedModel {
@@ -25,7 +26,7 @@ public final class ConnectedSlabBakedModel extends ConnectedTextureBakedModel {
     private final SlabKind kind;
 
     public ConnectedSlabBakedModel(TextureAtlasSprite base, TextureAtlasSprite ctm, SlabKind kind) {
-        super(base, ctm, ConnectionPredicates.SAME_SLAB);
+        super(base, ctm);
         this.kind = kind;
     }
 
@@ -37,7 +38,7 @@ public final class ConnectedSlabBakedModel extends ConnectedTextureBakedModel {
         EnumFacing insetFace = kind == SlabKind.BOTTOM ? EnumFacing.UP : EnumFacing.DOWN;
         // 整格外的邻居无法遮挡 y=0.5 处的切面
         if (side == insetFace) {
-            return java.util.Collections.emptyList();
+            return Collections.emptyList();
         }
         List<BakedQuad> quads = super.getQuads(state, side == null ? insetFace : side, rand);
         List<BakedQuad> result = new ArrayList<>(quads.size());

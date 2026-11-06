@@ -26,9 +26,6 @@ public class PigmeeTech {
 
     public static final Logger LOGGER = LogManager.getLogger(Tags.MOD_NAME);
 
-    @Mod.Instance(Tags.MOD_ID)
-    public static PigmeeTech INSTANCE;
-
     @SidedProxy(clientSide = "pigtech.client.PigmeeClientProxy",
         serverSide = "pigtech.CommonProxy")
     public static CommonProxy proxy;

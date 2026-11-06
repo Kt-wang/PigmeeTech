@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - RainbowPigmeeHandler (1.12.2)
+ * Pigmee Tech - RainbowPigmeeHandler (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.lightning.RainbowPigmeeTransformation.
  *
  * 命名为 jeb_ 的猪咪（掉落物或已放置方块）被雷击中后转化为彩虹猪咪。
@@ -12,6 +12,7 @@ import pigtech.init.PigmeeBlocks;
 import pigtech.tile.fumo.TileFumo;
 import pigtech.Tags;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
@@ -49,7 +50,7 @@ public final class RainbowPigmeeHandler {
             return;
         }
         World world = event.getWorld();
-        net.minecraft.entity.Entity bolt = event.getEntity();
+        Entity bolt = event.getEntity();
         BlockPos center = new BlockPos(bolt.posX, bolt.posY, bolt.posZ);
         AxisAlignedBB box = new AxisAlignedBB(center)
                 .grow(SEARCH_HORIZONTAL_RADIUS, SEARCH_VERTICAL_RADIUS, SEARCH_HORIZONTAL_RADIUS);

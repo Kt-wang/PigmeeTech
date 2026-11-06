@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - CtmConnectionState (1.12.2)
+ * Pigmee Tech - CtmConnectionState (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.client.ctm.CtmConnectionState.
  *
  * 一个方块的预计算连接数据，通过未列入的方块状态属性（IUnlistedProperty）

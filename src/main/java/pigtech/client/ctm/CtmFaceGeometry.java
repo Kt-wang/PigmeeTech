@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - CtmFaceGeometry (1.12.2)
+ * Pigmee Tech - CtmFaceGeometry (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.client.ctm.CtmFaceGeometry.
  *
  * Mekanism 风格 compact CTM 的逐面几何。面角点与面内邻居方向移植自源码

@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - FumoBlock (1.12.2)
+ * Pigmee Tech - FumoBlock (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.block.FumoBlock.
  *
  * 猪咪玩偶方块：可朝向、羊毛手感、右键切换旋转（由 TileFumo + FumoTESR 驱动）。
@@ -11,6 +11,8 @@ import pigtech.tile.fumo.TileFumo;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockHorizontal;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.SoundType;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
@@ -27,6 +29,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nullable;
 
@@ -41,7 +45,7 @@ public class FumoBlock extends Block {
 
     public FumoBlock() {
         super(Material.CLOTH);
-        this.setSoundType(net.minecraft.block.SoundType.CLOTH);
+        this.setSoundType(SoundType.CLOTH);
         this.setHardness(0.5F);
         this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
     }
@@ -86,7 +90,7 @@ public class FumoBlock extends Block {
 
     /** 对齐源码 getShadeBrightness = 1.0（全亮阴影） */
     @Override
-    @net.minecraftforge.fml.relauncher.SideOnly(net.minecraftforge.fml.relauncher.Side.CLIENT)
+    @SideOnly(Side.CLIENT)
     public float getAmbientOcclusionLightValue(IBlockState state) {
         return 1.0F;
     }
@@ -122,9 +126,9 @@ public class FumoBlock extends Block {
     }
 
     @Override
-    @net.minecraftforge.fml.relauncher.SideOnly(net.minecraftforge.fml.relauncher.Side.CLIENT)
+    @SideOnly(Side.CLIENT)
     public net.minecraft.util.BlockRenderLayer getRenderLayer() {
-        return net.minecraft.util.BlockRenderLayer.CUTOUT;
+        return BlockRenderLayer.CUTOUT;
     }
 
     /** 右键：切换旋转状态（服务端为准，通过 TE 数据包同步客户端） */

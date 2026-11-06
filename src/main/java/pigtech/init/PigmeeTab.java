@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - Pigmee Creative Tab (1.12.2)
+ * Pigmee Tech - PigmeeTab (1.12.2)
  * 猪咪科技专属创造物品栏，图标为猪咪玩偶。
  */
 package pigtech.init;

@@ -22,6 +22,11 @@ import net.minecraft.item.ItemSlab;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import java.util.ArrayList;
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
+
 public class PigmeeBlocks {
 
     // 猪咪玩偶
@@ -37,17 +42,17 @@ public class PigmeeBlocks {
         "white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray",
         "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
     public static PigmeeBuildingBlock PIGMEE_BUILDING_BLOCK;
-    public static final java.util.Map<EnumDyeColor, PigmeeBuildingPanelBlock> PIGMEE_BUILDING_PANELS =
-        new java.util.EnumMap<>(EnumDyeColor.class);
-    public static final java.util.Map<EnumDyeColor, PigmeeBuildingPanelBlock> PIGMEE_FRAMED_BUILDING_PANELS =
-        new java.util.EnumMap<>(EnumDyeColor.class);
+    public static final Map<EnumDyeColor, PigmeeBuildingPanelBlock> PIGMEE_BUILDING_PANELS =
+        new EnumMap<>(EnumDyeColor.class);
+    public static final Map<EnumDyeColor, PigmeeBuildingPanelBlock> PIGMEE_FRAMED_BUILDING_PANELS =
+        new EnumMap<>(EnumDyeColor.class);
     public static PigmeeBuildingSlabBlock.Half PIGMEE_BUILDING_SLAB;
-    public static final java.util.Map<EnumDyeColor, PigmeeBuildingSlabBlock.Half> PIGMEE_BUILDING_SLABS =
-        new java.util.EnumMap<>(EnumDyeColor.class);
-    public static final java.util.Map<EnumDyeColor, PigmeeBuildingSlabBlock.Half> PIGMEE_FRAMED_BUILDING_SLABS =
-        new java.util.EnumMap<>(EnumDyeColor.class);
+    public static final Map<EnumDyeColor, PigmeeBuildingSlabBlock.Half> PIGMEE_BUILDING_SLABS =
+        new EnumMap<>(EnumDyeColor.class);
+    public static final Map<EnumDyeColor, PigmeeBuildingSlabBlock.Half> PIGMEE_FRAMED_BUILDING_SLABS =
+        new EnumMap<>(EnumDyeColor.class);
     /** [half, double] 对，供 registerItemBlocks 注册 ItemSlab */
-    private static final java.util.List<PigmeeBuildingSlabBlock[]> PIGMEE_SLAB_PAIRS = new java.util.ArrayList<>();
+    private static final List<PigmeeBuildingSlabBlock[]> PIGMEE_SLAB_PAIRS = new ArrayList<>();
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -65,30 +70,30 @@ public class PigmeeBlocks {
         for (EnumDyeColor color : EnumDyeColor.values()) {
             String cname = PIGMEE_COLOR_NAMES[color.getMetadata()];
             PigmeeBuildingPanelBlock panel = reg(event,
-                new PigmeeBuildingPanelBlock(color, false), cname + "_pigmee_building_panel");
+                new PigmeeBuildingPanelBlock(color), cname + "_pigmee_building_panel");
             panel.setCreativeTab(PigmeeTab.INSTANCE);
             PIGMEE_BUILDING_PANELS.put(color, panel);
             PigmeeBuildingPanelBlock framed = reg(event,
-                new PigmeeBuildingPanelBlock(color, true), cname + "_pigmee_framed_building_panel");
+                new PigmeeBuildingPanelBlock(color), cname + "_pigmee_framed_building_panel");
             framed.setCreativeTab(PigmeeTab.INSTANCE);
             PIGMEE_FRAMED_BUILDING_PANELS.put(color, framed);
         }
         // 台阶：1.12.2 需要 半砖+双砖 成对注册（双砖无物品）
-        PIGMEE_BUILDING_SLAB = regSlabPair(event, null, "pigmee_building_slab");
+        PIGMEE_BUILDING_SLAB = regSlabPair(event, "pigmee_building_slab");
         for (EnumDyeColor color : EnumDyeColor.values()) {
             String cname = PIGMEE_COLOR_NAMES[color.getMetadata()];
             PIGMEE_BUILDING_SLABS.put(color,
-                regSlabPair(event, color, cname + "_pigmee_building_slab"));
+                regSlabPair(event, cname + "_pigmee_building_slab"));
             PIGMEE_FRAMED_BUILDING_SLABS.put(color,
-                regSlabPair(event, color, cname + "_pigmee_framed_building_slab"));
+                regSlabPair(event, cname + "_pigmee_framed_building_slab"));
         }
         PigmeeTech.LOGGER.info("Registered pigmee blocks");
     }
 
     private static PigmeeBuildingSlabBlock.Half regSlabPair(RegistryEvent.Register<Block> event,
-                                                            EnumDyeColor color, String name) {
-        PigmeeBuildingSlabBlock.Half half = new PigmeeBuildingSlabBlock.Half(color);
-        PigmeeBuildingSlabBlock.Double dbl = new PigmeeBuildingSlabBlock.Double(color, half);
+                                                            String name) {
+        PigmeeBuildingSlabBlock.Half half = new PigmeeBuildingSlabBlock.Half();
+        PigmeeBuildingSlabBlock.Double dbl = new PigmeeBuildingSlabBlock.Double(half);
         reg(event, half, name);
         reg(event, dbl, name + "_double");
         half.setCreativeTab(PigmeeTab.INSTANCE);

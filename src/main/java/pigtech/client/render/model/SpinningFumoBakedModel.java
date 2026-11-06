@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - SpinningFumoBakedModel (1.12.2)
+ * Pigmee Tech - SpinningFumoBakedModel (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.client.SpinningFumoBakedModel.
  *
  * 仅当物品以 HEAD 变换渲染时（戴在头上），绕中心 Y 轴持续旋转；

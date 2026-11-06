@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - CtmTileSelector (1.12.2)
+ * Pigmee Tech - CtmTileSelector (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.client.ctm.CtmTileSelector（纯逻辑，逐字移植）。
  *
  * 为一个面的一个象限选择 CTM compact 子图。CTM 贴图是 4×4 网格的 8×8 子图；

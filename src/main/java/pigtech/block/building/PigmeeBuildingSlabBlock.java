@@ -1,26 +1,35 @@
 /*
- * AE2 Crystal Science - PigmeeBuildingSlabBlock (1.12.2)
+ * Pigmee Tech - PigmeeBuildingSlabBlock (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.block.PigmeeBuildingSlabBlock.
  *
  * 猪咪建材台阶。1.12.2 的台阶必须拆成 半砖(Half) + 双砖(Double) 两个方块注册，
  * Double 无物品、不掉落自身（掉落物/中键选取都转给 Half）。
- * color 为 null 表示无色的基础建材台阶。
  */
 package pigtech.block.building;
 
 import net.minecraft.block.BlockSlab;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.common.property.ExtendedBlockState;
+import net.minecraftforge.common.property.IExtendedBlockState;
+import net.minecraftforge.common.property.IUnlistedProperty;
 
-import javax.annotation.Nullable;
+import pigtech.client.ctm.ConnectionPredicates;
+import pigtech.client.ctm.CtmConnectionState;
+import pigtech.client.ctm.PigmeeCtm;
+
 import java.util.Random;
 
 public abstract class PigmeeBuildingSlabBlock extends BlockSlab {
@@ -30,10 +39,10 @@ public abstract class PigmeeBuildingSlabBlock extends BlockSlab {
      * doubleSlab.getDefaultState().withProperty(getVariantProperty(), getTypeForItem(stack))，
      * 若双砖没有该属性会直接 IllegalArgumentException（原版石台阶用 variant=stone 同理）。
      */
-    public static final net.minecraft.block.properties.PropertyEnum<SlabVariant> VARIANT =
-            net.minecraft.block.properties.PropertyEnum.create("variant", SlabVariant.class);
+    public static final PropertyEnum<SlabVariant> VARIANT =
+            PropertyEnum.create("variant", SlabVariant.class);
 
-    public enum SlabVariant implements net.minecraft.util.IStringSerializable {
+    public enum SlabVariant implements IStringSerializable {
         DEFAULT;
 
         @Override
@@ -42,16 +51,12 @@ public abstract class PigmeeBuildingSlabBlock extends BlockSlab {
         }
     }
 
-    @Nullable
-    private final net.minecraft.item.EnumDyeColor color;
-
-    protected PigmeeBuildingSlabBlock(@Nullable net.minecraft.item.EnumDyeColor color) {
+    protected PigmeeBuildingSlabBlock() {
         super(Material.ROCK);
-        this.setSoundType(net.minecraft.block.SoundType.STONE);
+        this.setSoundType(SoundType.STONE);
         this.setHardness(1.5F);
         this.setResistance(6.0F);
         this.setHarvestLevel("pickaxe", 0);
-        this.color = color;
         this.useNeighborBrightness = true;
 
         IBlockState state = this.blockState.getBaseState();
@@ -59,11 +64,6 @@ public abstract class PigmeeBuildingSlabBlock extends BlockSlab {
             state = state.withProperty(HALF, EnumBlockHalf.BOTTOM);
         }
         this.setDefaultState(state);
-    }
-
-    @Nullable
-    public net.minecraft.item.EnumDyeColor getColor() {
-        return color;
     }
 
     @Override
@@ -84,21 +84,20 @@ public abstract class PigmeeBuildingSlabBlock extends BlockSlab {
     @Override
     protected BlockStateContainer createBlockState() {
         // 扩展状态容器：listed(HALF+VARIANT 或仅 VARIANT) + unlisted(CTM 连接数据)
-        return new net.minecraftforge.common.property.ExtendedBlockState(this,
+        return new ExtendedBlockState(this,
                 this.isDouble() ? new IProperty[]{VARIANT} : new IProperty[]{HALF, VARIANT},
-                new net.minecraftforge.common.property.IUnlistedProperty[]{pigtech.client.ctm.PigmeeCtm.CONNECTION});
+                new IUnlistedProperty[]{PigmeeCtm.CONNECTION});
     }
 
     /** 网格构建时（仅客户端）计算连接数据，随扩展状态传给烘焙模型 */
     @Override
-    public IBlockState getExtendedState(IBlockState state, net.minecraft.world.IBlockAccess world,
-                                        net.minecraft.util.math.BlockPos pos) {
-        if (state instanceof net.minecraftforge.common.property.IExtendedBlockState) {
-            pigtech.client.ctm.CtmConnectionState conn = pigtech.client.ctm.CtmConnectionState.compute(
-                    world, pos, state, pigtech.client.ctm.ConnectionPredicates.SAME_SLAB);
+    public IBlockState getExtendedState(IBlockState state, IBlockAccess world, BlockPos pos) {
+        if (state instanceof IExtendedBlockState) {
+            CtmConnectionState conn = CtmConnectionState.compute(
+                    world, pos, state, ConnectionPredicates.SAME_SLAB);
             if (conn != null) {
-                return ((net.minecraftforge.common.property.IExtendedBlockState) state)
-                        .withProperty(pigtech.client.ctm.PigmeeCtm.CONNECTION, conn);
+                return ((IExtendedBlockState) state)
+                        .withProperty(PigmeeCtm.CONNECTION, conn);
             }
         }
         return state;
@@ -128,8 +127,8 @@ public abstract class PigmeeBuildingSlabBlock extends BlockSlab {
 
     /** 半砖：正常注册物品（ItemSlab），参与合成与创造栏 */
     public static class Half extends PigmeeBuildingSlabBlock {
-        public Half(@Nullable net.minecraft.item.EnumDyeColor color) {
-            super(color);
+        public Half() {
+            super();
         }
 
         @Override
@@ -142,8 +141,8 @@ public abstract class PigmeeBuildingSlabBlock extends BlockSlab {
     public static class Double extends PigmeeBuildingSlabBlock {
         private final Half half;
 
-        public Double(@Nullable net.minecraft.item.EnumDyeColor color, Half half) {
-            super(color);
+        public Double(Half half) {
+            super();
             this.half = half;
         }
 

@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - RainbowPigmeeShader (1.12.2)
+ * Pigmee Tech - RainbowPigmeeShader (1.12.2)
  * Port of ae2lt 1.21.1 assets/ae2lt/shaders/core/rainbow_pigmee.{vsh,fsh}.
  *
  * 彩虹猪咪的表面色带 shader。1.12.2 没有核心着色器管线，

@@ -1,5 +1,5 @@
 /*
- * AE2 Crystal Science - ConnectionPredicates (1.12.2)
+ * Pigmee Tech - ConnectionPredicates (1.12.2)
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.client.ctm.ConnectionPredicates（裁剪到猪咪建材用到的规则）。
  */
 package pigtech.client.ctm;
@@ -13,24 +13,6 @@ import net.minecraft.world.IBlockAccess;
 
 /** 猪咪建材用到的连接规则注册表 */
 public final class ConnectionPredicates {
-
-    /** 通用：任何相邻同类型方块都连接（对齐源码 same_block） */
-    public static final ConnectionPredicate SAME_BLOCK = new ConnectionPredicate() {
-        @Override
-        public boolean isActive(IBlockAccess world, BlockPos pos, IBlockState self) {
-            return true;
-        }
-
-        @Override
-        public boolean connects(IBlockAccess world, BlockPos pos, IBlockState self, EnumFacing dir) {
-            return connects(world, pos, self, pos.offset(dir));
-        }
-
-        @Override
-        public boolean connects(IBlockAccess world, BlockPos pos, IBlockState self, BlockPos neighbourPos) {
-            return world.getBlockState(neighbourPos).getBlock() == self.getBlock();
-        }
-    };
 
     /**
      * 猪咪板材专用：同色素板/框板互连（对齐指南"素板与框板使用同一种颜色时自动连纹"）。
