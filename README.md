@@ -12,7 +12,7 @@
 |---|---|
 | Mod ID | `pigtech` |
 | Minecraft | 1.12.2 |
-| 加载器 | [Cleanroom Loader](https://github.com/CleanroomMC/Cleanroom) `0.5.14-alpha` |
+| 加载器 | [Cleanroom Loader](https://github.com/CleanroomMC/Cleanroom) |
 | 前置（必需） | [AE2-Supergiant](https://github.com/FormlessDragon/Applied-Energistics-2-Supergiant) |
 | 可选 | JEI |
 | Java | 25（构建与运行） |
