@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      # The tag is the release's identity; mod_version is the version baked into the mod.
+      # Refuse to publish a build whose annotation version disagrees with the tag.
+      - name: Verify tag matches mod_version
+        run: |
+          version="$(grep -E '^mod_version[[:space:]]*=' gradle.properties | head -n1 | cut -d= -f2 | tr -d '[:space:]')"
+          if [ "v${version}" != "${GITHUB_REF_NAME}" ]; then
+            echo "::error::tag ${GITHUB_REF_NAME} does not match mod_version v${version} in gradle.properties"
+            exit 1
+          fi
+          echo "releasing ${GITHUB_REF_NAME}"
+
+      - name: Build
+        run: ./gradlew build --no-daemon --stacktrace
+
+      - name: Collect artifacts
+        run: |
+          ls -l build/libs
+          for f in PigmeeTech.jar PigmeeTech-sources.jar; do
+            test -f "build/libs/${f}" || { echo "::error::missing build/libs/${f}"; exit 1; }
+          done
+
+      - name: Create GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          fail_on_unmatched_files: true
+          files: |
+            build/libs/PigmeeTech.jar
+            build/libs/PigmeeTech-sources.jar
