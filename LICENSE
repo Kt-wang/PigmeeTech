@@ -82,10 +82,10 @@ are:
 - Applied Energistics 2 Supergiant
   https://github.com/FormlessDragon/Applied-Energistics-2-Supergiant
 
-The 1.12.2 Cleanroom scaffolding follows the conventions of
-AE2 Crystal Science: Legacy
-(https://github.com/Kt-wang/AE2-Crystal-Science-Legacy), whose porting work is
-credited in NOTICE.
+The 1.12.2 Cleanroom scaffolding follows the conventions of AE2 Crystal
+Science: Legacy (https://github.com/Kt-wang/AE2-Crystal-Science-Legacy).
+Neither that project nor its upstream Applied Energistics: Crystal Science is
+a code dependency of this mod; see NOTICE for the full upstream list.
 
 See NOTICE for attribution and modification information.
 
