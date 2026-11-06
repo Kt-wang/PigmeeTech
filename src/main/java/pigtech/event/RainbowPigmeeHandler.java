@@ -35,6 +35,11 @@ public final class RainbowPigmeeHandler {
     /** 对齐源码 LightningTransformRules：水平 3 格、垂直 2 格 */
     private static final double SEARCH_HORIZONTAL_RADIUS = 3.0D;
     private static final double SEARCH_VERTICAL_RADIUS = 2.0D;
+    private static final String CHECKED_TAG = "pigtech:rainbow_checked";
+    private static final String PROTECTED_UNTIL = "pigtech:rainbow_protected_until";
+    private static final String WAS_INVULNERABLE = "pigtech:rainbow_was_invulnerable";
+    private static final java.util.Set<EntityItem> PROTECTED_ITEMS =
+            java.util.Collections.newSetFromMap(new java.util.WeakHashMap<>());
 
     private RainbowPigmeeHandler() {
     }
@@ -45,11 +50,38 @@ public final class RainbowPigmeeHandler {
 
     @SubscribeEvent
     public static void onLightningSpawn(EntityJoinWorldEvent event) {
-        if (event.getWorld().isRemote || !(event.getEntity() instanceof EntityLightningBolt)) {
-            return;
+        if (event.getWorld().isRemote) return;
+        if (event.getEntity() instanceof EntityItem item && item.getEntityData().hasKey(PROTECTED_UNTIL)) {
+            PROTECTED_ITEMS.add(item);
         }
-        World world = event.getWorld();
-        net.minecraft.entity.Entity bolt = event.getEntity();
+        if (event.getEntity() instanceof EntityLightningBolt bolt) handleLightning(bolt);
+    }
+
+    /** Weather effects are not ordinary spawned entities on 1.12.2. */
+    @SubscribeEvent
+    public static void onWorldTick(net.minecraftforge.fml.common.gameevent.TickEvent.WorldTickEvent event) {
+        if (event.phase != net.minecraftforge.fml.common.gameevent.TickEvent.Phase.START || event.world.isRemote) return;
+        for (net.minecraft.entity.Entity entity : event.world.weatherEffects)
+            if (entity instanceof EntityLightningBolt bolt) handleLightning(bolt);
+        var iterator = PROTECTED_ITEMS.iterator();
+        while (iterator.hasNext()) {
+            EntityItem item = iterator.next();
+            if (item.world != event.world) continue;
+            if (item.isDead) { iterator.remove(); continue; }
+            NBTTagCompound data = item.getEntityData();
+            if (data.getLong(PROTECTED_UNTIL) <= event.world.getTotalWorldTime()) {
+                item.setEntityInvulnerable(data.getBoolean(WAS_INVULNERABLE));
+                data.removeTag(PROTECTED_UNTIL);
+                data.removeTag(WAS_INVULNERABLE);
+                iterator.remove();
+            } else item.extinguish();
+        }
+    }
+
+    public static void handleLightning(EntityLightningBolt bolt) {
+        if (bolt.world.isRemote || bolt.getEntityData().getBoolean(CHECKED_TAG)) return;
+        bolt.getEntityData().setBoolean(CHECKED_TAG, true);
+        World world = bolt.world;
         BlockPos center = new BlockPos(bolt.posX, bolt.posY, bolt.posZ);
         AxisAlignedBB box = new AxisAlignedBB(center)
                 .grow(SEARCH_HORIZONTAL_RADIUS, SEARCH_VERTICAL_RADIUS, SEARCH_HORIZONTAL_RADIUS);
@@ -82,7 +114,12 @@ public final class RainbowPigmeeHandler {
             }
             entity.setItem(result);
             // 对齐源码的输出保护：刚转化的产物必须躲过这道雷接下来的伤害判定
+            NBTTagCompound data = entity.getEntityData();
+            data.setBoolean(WAS_INVULNERABLE, entity.getIsInvulnerable());
+            data.setLong(PROTECTED_UNTIL, world.getTotalWorldTime() + 40);
             entity.setEntityInvulnerable(true);
+            entity.extinguish();
+            PROTECTED_ITEMS.add(entity);
         }
     }
 
@@ -104,12 +141,22 @@ public final class RainbowPigmeeHandler {
                 continue;
             }
             boolean spinning = ((TileFumo) te).isSpinning();
-            world.setBlockState(pos, PigmeeBlocks.RAINBOW_PIGMEE_FUMO.getDefaultState()
-                    .withProperty(FumoBlock.FACING, state.getValue(FumoBlock.FACING)), 3);
+            IBlockState result = PigmeeBlocks.RAINBOW_PIGMEE_FUMO.getDefaultState()
+                    .withProperty(FumoBlock.FACING, state.getValue(FumoBlock.FACING));
+            // Preserve optional waterlogging properties injected by fluid compatibility mods.
+            for (net.minecraft.block.properties.IProperty<?> property : state.getPropertyKeys())
+                if (property.getName().equals("waterlogged") && result.getPropertyKeys().contains(property))
+                    result = copyProperty(result, state, property);
+            world.setBlockState(pos, result, 3);
             TileEntity converted = world.getTileEntity(pos);
             if (converted instanceof TileFumo && ((TileFumo) converted).isSpinning() != spinning) {
                 ((TileFumo) converted).toggleSpinning();
             }
         }
+    }
+
+    private static <T extends Comparable<T>> IBlockState copyProperty(IBlockState target, IBlockState source,
+                                                                    net.minecraft.block.properties.IProperty<T> property) {
+        return target.withProperty(property, source.getValue(property));
     }
 }

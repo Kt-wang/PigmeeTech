@@ -35,4 +35,6 @@ dependencies {
     // 仅 JEI（可选集成：彩虹猪咪 info 页）。
     modCompileOnly 'mezz:jei:4.35.1'
     modRuntimeOnly 'mezz:jei:4.35.1'
+    // Optional fluid integration. The independent runtime is only loaded when installed.
+    modCompileOnly('curse.maven:farmers-future-delight-1637097:9187601') { transitive = false }
 }

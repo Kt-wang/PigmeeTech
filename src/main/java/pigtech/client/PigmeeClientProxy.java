@@ -43,6 +43,7 @@ public class PigmeeClientProxy extends CommonProxy {
 
     @Override
     public void init(FMLInitializationEvent event) {
+        super.init(event);
         // 猪咪玩偶：旋转动画渲染器
         ClientRegistry.bindTileEntitySpecialRenderer(TileFumo.class, new FumoTESR());
         // 彩虹猪咪：物品形态由 TEISR 渲染（shader 色带 + 面部标记，对齐源码）
@@ -56,6 +57,9 @@ public class PigmeeClientProxy extends CommonProxy {
         for (Block block : ForgeRegistries.BLOCKS.getValuesCollection()) {
             ResourceLocation rl = block.getRegistryName();
             if (rl != null && rl.toString().startsWith(Tags.MOD_ID + ":")) {
+                if (block.getDefaultState().getPropertyKeys().contains(pigtech.integration.PigmeeWaterlogging.WATERLOGGED))
+                    ModelLoader.setCustomStateMapper(block, new net.minecraft.client.renderer.block.statemap.StateMap.Builder()
+                            .ignore(pigtech.integration.PigmeeWaterlogging.WATERLOGGED).build());
                 Item item = Item.getItemFromBlock(block);
                 if (item == null || item == net.minecraft.init.Items.AIR) {
                     continue;

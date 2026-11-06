@@ -15,6 +15,7 @@
 | 加载器 | [Cleanroom Loader](https://github.com/CleanroomMC/Cleanroom) |
 | 前置（必需） | [AE2-Supergiant](https://github.com/FormlessDragon/Applied-Energistics-2-Supergiant) |
 | 可选 | JEI |
+| 可选 | Farmer's Future Delight 1.4.6（玩偶与半砖含水、流体交互和水体渲染） |
 | Java | 25（构建与运行） |
 
 ## 安装
@@ -36,6 +37,10 @@
 | 染料循环 | 普通猪咪 + 白色染料 = 白色猪咪；白色 + 黑色染料 = 黑色猪咪 …… 任意颜色都可继续用染料换色 |
 
 具体配方以 JEI 为准。
+
+彩虹猪咪的 16 种染料布局按原样匹配，不镜像或平移；将四份染料基底换成四件相同、可染色且可堆叠的物品，可以一次给四件染色。换色保留名称和其他 NBT，并保留彩虹猪咪催化剂。盾牌和皮革装备可通过单件循环换色；批量配方遵守物品堆叠上限。
+
+命名为 `jeb_` 的普通猪咪在自然天气闪电及实体闪电经过时均可变成彩虹猪咪，保留朝向、旋转和含水状态；掉落物数量与其他 NBT 保留，雷击保护会在 40 个世界 tick 后解除。
 
 ## 构建
 
