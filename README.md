@@ -12,16 +12,16 @@
 |---|---|
 | Mod ID | `pigtech` |
 | Minecraft | 1.12.2 |
-| 加载器 | [Cleanroom Loader](https://github.com/CleanroomMC/Cleanroom) `0.5.14-alpha`（**不能在普通 Forge 1.12.2 上运行**） |
-| 前置（必需） | [AE2-Supergiant](https://github.com/FormlessDragon/Applied-Energistics-2-Supergiant) `v1.1.0` |
-| 可选 | JEI `4.35.1`（彩虹猪咪信息页） |
+| 加载器 | [Cleanroom Loader](https://github.com/CleanroomMC/Cleanroom) `0.5.14-alpha` |
+| 前置（必需） | [AE2-Supergiant](https://github.com/FormlessDragon/Applied-Energistics-2-Supergiant) |
+| 可选 | JEI |
 | Java | 25（构建与运行） |
 
 ## 安装
 
-1. 准备一个 Minecraft 1.12.2 + Cleanroom Loader `0.5.14-alpha` 的实例，并使用 JDK 25 启动。
-2. 把 **AE2-Supergiant `v1.1.0`** 和 `PigmeeTech.jar` 一起放进 `mods/`。
-3. 可选：加入 JEI `4.35.1`，可在 JEI 里查看彩虹猪咪信息页。
+1. 准备一个 Minecraft 1.12.2 + Cleanroom 实例，并使用 JDK 25 启动。
+2. 把 **AE2-Supergiant** 和 `PigmeeTech.jar` 一起放进 `mods/`。
+3. 可选：加入 JEI。
 4. 启动游戏。染料基底的配方使用 `ae2:silicon`，缺少 AE2 时本模组不会加载。
 
 ## 内容
@@ -49,11 +49,6 @@
 
 - 开发运行前先把 AE2-Supergiant 放进 `run/client/mods`（服务端为 `run/server/mods`），JEI 可选。
 - `run/`、`build/`、`.gradle/` 均不入库。
-
-## 旧存档
-
-本模组使用全新的注册名（`pigtech:*`），**不复用任何旧模组的注册名**。其它模组（包括 AE2LT 与
-AE2 Crystal Science: Legacy）存档里已有的猪咪内容不会自动迁移，建议用创造模式重新放置。
 
 ## 许可与致谢
 
@@ -83,8 +78,7 @@ An unofficial Minecraft 1.12.2 / Cleanroom port of the pigmee subsystem from
 pigmee variants, pigmee building blocks (panels, framed panels, slabs with CTM), dye base and the
 rainbow pigmee recoloring loop.
 
-- Mod id: `pigtech` — requires **AE2-Supergiant v1.1.0** and **Java 25**;
-  it does **not** run on plain Forge 1.12.2. JEI 4.35.1 is optional.
+- Mod id: `pigtech` — requires **AE2-Supergiant** and **Java 25**. JEI is optional.
 - Build: `./gradlew build` → `build/libs/PigmeeTech.jar`; `./gradlew runClient` / `runServer` for development.
 - License: source code **LGPL-3.0-or-later**, textures and models **CC BY-NC-SA 3.0**.
   See [LICENSE](LICENSE), [LICENSE_ASSETS.md](LICENSE_ASSETS.md) and [NOTICE](NOTICE).
