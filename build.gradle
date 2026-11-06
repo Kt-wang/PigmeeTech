@@ -185,11 +185,15 @@ jar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from('LICENSE') {
         into 'META-INF'
-        rename { 'LICENSE-AE2CSL' }
+        rename { 'LICENSE-PIGTECH' }
     }
     from('NOTICE') {
         into 'META-INF'
-        rename { 'NOTICE-AE2CSL' }
+        rename { 'NOTICE-PIGTECH' }
+    }
+    from('LICENSE_ASSETS.md') {
+        into 'META-INF'
+        rename { 'LICENSE_ASSETS-PIGTECH.md' }
     }
     from('LICENSES') {
         into 'META-INF/LICENSES'

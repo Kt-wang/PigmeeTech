@@ -24,6 +24,18 @@ gradle-app.setting
 
 # IDEA config
 .idea
+*.iml
+
+# VS Code
+.vscode/
+
+# macOS / Windows metadata
+.DS_Store
+Thumbs.db
+
+# Local run output
+logs/
+crash-reports/
 
 # Local environment variables / secrets
 .env
