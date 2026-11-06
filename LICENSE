@@ -1,0 +1,87 @@
+AE2 Crystal Science: Legacy — Licensing Overview
+================================================
+
+This project is an unofficial Minecraft 1.12.2 port of Applied Energistics:
+Crystal Science (AECS). It uses a multi-license structure. Different portions
+of the project are governed by different licenses; this overview does not
+replace the complete license texts in the LICENSES directory.
+
+1. Source code
+--------------
+
+License: GNU Lesser General Public License version 3.0 or later
+(SPDX: LGPL-3.0-or-later)
+
+Applies to:
+- Source code under src/main/java/
+- Source-derived scripts and implementation files, unless a file carries a
+  different license notice
+
+Original AECS code:
+- Copyright (c) 2026 Frostbite-time
+- Copyright (c) 2026 Lounode
+
+Minecraft 1.12.2 port and subsequent modifications:
+- Copyright (c) 2026 KleinBlue
+
+AE2-derived portions remain subject to their original copyright and license:
+- Copyright (c) 2013-2020 AlgorithmX2 et al.
+- GNU Lesser General Public License version 3.0
+
+The complete LGPL-3.0 license text is available at:
+- LICENSES/LGPL-3.0.txt
+
+2. Textures and models
+----------------------
+
+License: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported
+(SPDX: CC-BY-NC-SA-3.0)
+
+Applies to copied, modified, or derived texture and model assets under:
+- src/main/resources/assets/ae2csl/textures/
+- src/main/resources/assets/ae2csl/models/
+
+Original AECS texture attribution:
+- Copyright (c) 2026 MHanHanBing
+
+Original AECS 3D model attribution:
+- Copyright (c) 2026 TedXenon
+
+AE2-derived texture and model attribution:
+- Copyright (c) 2020 Ridanisaurus Rid
+- Copyright (c) 2013-2020 AlgorithmX2 et al.
+
+Port adaptations:
+- Copyright (c) 2026 KleinBlue
+
+These assets may not be used for commercial purposes without separate
+permission from the applicable copyright holders. Adapted assets must be
+shared under the same CC BY-NC-SA 3.0 license.
+
+The complete license text is available at:
+- LICENSES/CC-BY-NC-SA-3.0.txt
+
+3. Other third-party material
+-----------------------------
+
+Third-party files retain their original copyright and license notices. This
+project does not relicense third-party material. The primary upstream sources
+are:
+
+- Applied Energistics: Crystal Science
+  https://github.com/Frostbite-time/AE2-Crystal-Science
+- Applied Energistics 2
+  https://github.com/AppliedEnergistics/Applied-Energistics-2
+- Applied Energistics 2 Supergiant
+  https://github.com/FormlessDragon/Applied-Energistics-2-Supergiant
+
+See NOTICE for attribution and modification information.
+
+4. Distribution notice
+-----------------------
+
+Redistribution of this port, in source or binary form, must comply with the
+license applicable to each portion. In particular, preserve copyright and
+license notices, identify modified versions, provide the corresponding source
+as required by LGPL-3.0-or-later, and satisfy the attribution,
+non-commercial, and share-alike requirements for CC BY-NC-SA 3.0 assets.

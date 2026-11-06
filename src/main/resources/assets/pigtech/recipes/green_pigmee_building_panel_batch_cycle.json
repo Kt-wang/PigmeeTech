@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "PCP",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "pigtech:green_pigmee_building_panel"
+    },
+    "C": {
+      "item": "pigtech:rainbow_pigmee_fumo"
+    }
+  },
+  "result": {
+    "item": "pigtech:red_pigmee_building_panel",
+    "count": 8
+  },
+  "group": "pigmee_batch_cycle"
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "pigtech:block/pigmee_building/pink_pigmee_building_panel",
+    "particle": "pigtech:block/pigmee_building/pink_pigmee_building_panel"
+  }
+}

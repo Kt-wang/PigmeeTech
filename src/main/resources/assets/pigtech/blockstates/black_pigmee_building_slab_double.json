@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "variant=default": {
+      "model": "pigtech:black_pigmee_building_slab_double"
+    }
+  }
+}

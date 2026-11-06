@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "pigtech:pigmee_building_block"
+    }
+  },
+  "result": {
+    "item": "pigtech:pigmee_building_slab",
+    "count": 6,
+    "data": 0
+  }
+}

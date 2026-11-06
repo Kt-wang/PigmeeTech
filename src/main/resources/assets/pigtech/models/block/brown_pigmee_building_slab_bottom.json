@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/half_slab",
+  "textures": {
+    "bottom": "pigtech:block/pigmee_building/brown_pigmee_building_panel",
+    "top": "pigtech:block/pigmee_building/brown_pigmee_building_panel",
+    "side": "pigtech:block/pigmee_building/brown_pigmee_building_panel",
+    "particle": "pigtech:block/pigmee_building/brown_pigmee_building_panel"
+  }
+}

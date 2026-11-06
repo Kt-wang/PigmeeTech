@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " BB",
+    "BP ",
+    " B "
+  ],
+  "key": {
+    "P": {
+      "item": "pigtech:rainbow_pigmee_fumo"
+    },
+    "B": {
+      "item": "pigtech:dye_base"
+    }
+  },
+  "result": {
+    "item": "minecraft:dye",
+    "count": 4,
+    "data": 2
+  },
+  "group": "pigmee_dye"
+}

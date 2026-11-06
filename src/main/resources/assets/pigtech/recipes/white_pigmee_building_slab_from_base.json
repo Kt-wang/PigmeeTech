@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "pigtech:pigmee_building_slab",
+      "data": 0
+    }
+  ],
+  "result": {
+    "item": "pigtech:white_pigmee_building_slab",
+    "count": 1,
+    "data": 0
+  },
+  "group": "pigmee_slab"
+}

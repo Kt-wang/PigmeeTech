@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "CCC",
+    "CPC",
+    "CCC"
+  ],
+  "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "P": {
+      "item": "pigtech:rainbow_pigmee_fumo"
+    }
+  },
+  "result": {
+    "item": "pigtech:pigmee_building_block",
+    "count": 8
+  }
+}

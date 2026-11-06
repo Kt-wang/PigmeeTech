@@ -1,0 +1,50 @@
+AE2 Crystal Science: Legacy
+===========================
+
+This is an unofficial Minecraft 1.12.2 / Cleanroom port of Applied
+Energistics: Crystal Science. It is not affiliated with or endorsed by the
+original AECS authors or the Applied Energistics 2 team.
+
+Upstream project
+----------------
+
+Applied Energistics: Crystal Science
+https://github.com/Frostbite-time/AE2-Crystal-Science
+
+Original code:
+- Copyright (c) 2026 Frostbite-time
+- Copyright (c) 2026 Lounode
+
+Original textures:
+- Copyright (c) 2026 MHanHanBing
+
+Original 3D models:
+- Copyright (c) 2026 TedXenon
+
+Port
+----
+
+Minecraft 1.12.2 port and modifications:
+- Copyright (c) 2026 KleinBlue
+
+The port changes APIs and implementation details for Minecraft 1.12.2,
+Cleanroom Loader, Forge's ore dictionary, NBT-based item data, legacy GUI and
+networking APIs, and AE2 Supergiant compatibility.
+
+Related upstream work
+---------------------
+
+Applied Energistics 2
+https://github.com/AppliedEnergistics/Applied-Energistics-2
+Copyright (c) 2013-2020 AlgorithmX2 et al.
+
+Applied Energistics 2 Supergiant
+https://github.com/FormlessDragon/Applied-Energistics-2-Supergiant
+
+License summary
+---------------
+
+- Source code: LGPL-3.0-or-later
+- Textures and models: CC BY-NC-SA 3.0
+
+See LICENSE and LICENSES/ for the applicable terms and complete license texts.

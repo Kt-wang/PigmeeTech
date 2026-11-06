@@ -1,0 +1,38 @@
+repositories {
+    // 阿里云镜像优先（public 代理 Maven Central，google 代理 Google Maven）
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    maven { url 'https://maven.aliyun.com/repository/google' }
+    maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+
+    maven { name = 'CleanroomMC'; url = 'https://maven.cleanroommc.com' }
+    maven { name = 'CurseMaven'; url = 'https://cursemaven.com' }
+    maven {
+        name = 'CleanroomCurseMaven'
+        url = 'https://curse.cleanroommc.com'
+        content { includeGroup 'curse.maven' }
+    }
+    maven { name = 'Modrinth'; url = 'https://api.modrinth.com/maven' }
+    maven { name = 'ModMaven'; url = uri('https://modmaven.dev/') }
+    maven { name = 'JitPack'; url = 'https://www.jitpack.io' }
+    maven { name = 'BlameJared'; url = 'https://maven.blamejared.com/' }
+    mavenCentral()
+    mavenLocal()
+}
+dependencies {
+    // Cleanroom 运行期 agent（Unprotect）需要 ASM，sponge-mixin 会把它带进 classpath。
+    compileOnly "com.cleanroommc:sponge-mixin:0.20.13+mixin.0.8.7"
+    if (enable_lwjglx.toBoolean()) {
+        compileOnly "com.cleanroommc:lwjglx:1.0.0"
+    }
+
+    // Cleanroom 的 Unprotect agent 需要 ASM 在运行期 classpath 上（主项目由 CraftTweaker 间接带入）
+    modRuntimeOnly "org.ow2.asm:asm:9.9.1"
+
+    // AE2（染料基底配方使用 ae2:silicon；运行期需要 AE2，见 @Mod dependencies）
+    var ae2_version = "v1.1.0"
+    compileOnly "com.github.FormlessDragon:Applied-Energistics-2-Supergiant:${ae2_version}:dev"
+
+    // 仅 JEI（可选集成：彩虹猪咪 info 页）。
+    modCompileOnly 'mezz:jei:4.35.1'
+    modRuntimeOnly 'mezz:jei:4.35.1'
+}

@@ -1,0 +1,151 @@
+
+# Items
+# Pure Crystals (17 types)
+# Crystal Seeds (17 types)
+# Dusts
+# Tools - Ender
+
+# JEI
+
+# API - Machine Settings
+
+# API - Side Policy
+
+# API - Relative Side
+
+# API - Direction
+
+
+
+# GUI - Broadcaster sub-menus
+
+# Messages - Band linking
+
+# Messages - Ender linker
+
+# Messages - Mirror / Resonating provider
+
+# Tool Linking Tooltips
+
+# Resonating Drive (placeholder)
+
+# Resonating Drive Settings
+
+# Pigmee Fumo (ported from ae2lt)
+itemGroup.pigtech.pigmee=Pigmee Tech
+tile.pigmee_fumo.name=Pigmee Fumo
+tile.creative_pigmee_fumo.name=Creative Pigmee Fumo
+tooltip.pigtech.pigmee_fumo.1=You thought you were always one little pig,
+tooltip.pigtech.pigmee_fumo.2=then around the corner was another just as slow and soft.
+tooltip.pigtech.pigmee_fumo.3=You did not say much, but neither of you feared being alone anymore.
+tooltip.pigtech.pigmee_fumo.4=May you meet the Pigmee meant for you -- MOAKIEE
+tooltip.pigtech.creative_pigmee_fumo.1=Sometimes it misses an old board veiled in fine dust.
+tooltip.pigtech.creative_pigmee_fumo.2=Craft it with one item to turn that item into a full stack.
+tooltip.pigtech.creative_pigmee_fumo.3=The Pigmee remains, and every component of the item is preserved.
+tooltip.pigtech.creative_pigmee_fumo.4=It is powerless against its own reflection.
+tile.rainbow_pigmee_fumo.name=Rainbow Pigmee Fumo
+tooltip.pigtech.rainbow_pigmee_fumo.1=It wears the sky after the rain.
+tooltip.pigtech.rainbow_pigmee_fumo.2=Craft with one colorable item to cycle 16 colors; uncolored starts at white.
+tooltip.pigtech.rainbow_pigmee_fumo.3=Place four identical items in a dye recipe layout to choose that color.
+tooltip.pigtech.rainbow_pigmee_fumo.4=The Pigmee remains; it still makes dyes and Pigmee Building Blocks.
+jei.pigtech.rainbow_pigmee.info=Pigmee once asked a shimmering sheep about the secret of its name. The sky answered with a rumble.
+jei.pigtech.rainbow_pigmee.coloring=Craft with one colorable item to cycle white, orange, magenta, light blue, yellow, lime, pink, gray, light gray, cyan, purple, blue, brown, green, red and black. Uncolored items start at white. Replace the four Dye Bases in a dye recipe with four identical stackable items to color all four, keeping Rainbow Pigmee in the center. The Pigmee is reusable. Use single-item cycling for non-stackable items such as armor and shulker boxes. Mixed leather colors continue from the nearest Minecraft dye color. Items with all 16 color variants are supported; uncolored variants are identified from dye recipes with equal input/output quantities. Names, enchantments and stored contents are preserved.
+
+# ---- Pigmee Building Materials ----
+tile.pigmee_building_block.name=Pigmee Building Block
+tile.pigmee_building_slab.name=Pigmee Building Slab
+tile.white_pigmee_building_panel.name=White Pigmee Plain Panel
+tile.white_pigmee_framed_building_panel.name=White Pigmee Framed Panel
+tile.white_pigmee_building_slab.name=White Pigmee Plain Slab
+tile.white_pigmee_framed_building_slab.name=White Pigmee Framed Slab
+tile.orange_pigmee_building_panel.name=Orange Pigmee Plain Panel
+tile.orange_pigmee_framed_building_panel.name=Orange Pigmee Framed Panel
+tile.orange_pigmee_building_slab.name=Orange Pigmee Plain Slab
+tile.orange_pigmee_framed_building_slab.name=Orange Pigmee Framed Slab
+tile.magenta_pigmee_building_panel.name=Magenta Pigmee Plain Panel
+tile.magenta_pigmee_framed_building_panel.name=Magenta Pigmee Framed Panel
+tile.magenta_pigmee_building_slab.name=Magenta Pigmee Plain Slab
+tile.magenta_pigmee_framed_building_slab.name=Magenta Pigmee Framed Slab
+tile.light_blue_pigmee_building_panel.name=Light Blue Pigmee Plain Panel
+tile.light_blue_pigmee_framed_building_panel.name=Light Blue Pigmee Framed Panel
+tile.light_blue_pigmee_building_slab.name=Light Blue Pigmee Plain Slab
+tile.light_blue_pigmee_framed_building_slab.name=Light Blue Pigmee Framed Slab
+tile.yellow_pigmee_building_panel.name=Yellow Pigmee Plain Panel
+tile.yellow_pigmee_framed_building_panel.name=Yellow Pigmee Framed Panel
+tile.yellow_pigmee_building_slab.name=Yellow Pigmee Plain Slab
+tile.yellow_pigmee_framed_building_slab.name=Yellow Pigmee Framed Slab
+tile.lime_pigmee_building_panel.name=Lime Pigmee Plain Panel
+tile.lime_pigmee_framed_building_panel.name=Lime Pigmee Framed Panel
+tile.lime_pigmee_building_slab.name=Lime Pigmee Plain Slab
+tile.lime_pigmee_framed_building_slab.name=Lime Pigmee Framed Slab
+tile.pink_pigmee_building_panel.name=Pink Pigmee Plain Panel
+tile.pink_pigmee_framed_building_panel.name=Pink Pigmee Framed Panel
+tile.pink_pigmee_building_slab.name=Pink Pigmee Plain Slab
+tile.pink_pigmee_framed_building_slab.name=Pink Pigmee Framed Slab
+tile.gray_pigmee_building_panel.name=Gray Pigmee Plain Panel
+tile.gray_pigmee_framed_building_panel.name=Gray Pigmee Framed Panel
+tile.gray_pigmee_building_slab.name=Gray Pigmee Plain Slab
+tile.gray_pigmee_framed_building_slab.name=Gray Pigmee Framed Slab
+tile.light_gray_pigmee_building_panel.name=Light Gray Pigmee Plain Panel
+tile.light_gray_pigmee_framed_building_panel.name=Light Gray Pigmee Framed Panel
+tile.light_gray_pigmee_building_slab.name=Light Gray Pigmee Plain Slab
+tile.light_gray_pigmee_framed_building_slab.name=Light Gray Pigmee Framed Slab
+tile.cyan_pigmee_building_panel.name=Cyan Pigmee Plain Panel
+tile.cyan_pigmee_framed_building_panel.name=Cyan Pigmee Framed Panel
+tile.cyan_pigmee_building_slab.name=Cyan Pigmee Plain Slab
+tile.cyan_pigmee_framed_building_slab.name=Cyan Pigmee Framed Slab
+tile.purple_pigmee_building_panel.name=Purple Pigmee Plain Panel
+tile.purple_pigmee_framed_building_panel.name=Purple Pigmee Framed Panel
+tile.purple_pigmee_building_slab.name=Purple Pigmee Plain Slab
+tile.purple_pigmee_framed_building_slab.name=Purple Pigmee Framed Slab
+tile.blue_pigmee_building_panel.name=Blue Pigmee Plain Panel
+tile.blue_pigmee_framed_building_panel.name=Blue Pigmee Framed Panel
+tile.blue_pigmee_building_slab.name=Blue Pigmee Plain Slab
+tile.blue_pigmee_framed_building_slab.name=Blue Pigmee Framed Slab
+tile.brown_pigmee_building_panel.name=Brown Pigmee Plain Panel
+tile.brown_pigmee_framed_building_panel.name=Brown Pigmee Framed Panel
+tile.brown_pigmee_building_slab.name=Brown Pigmee Plain Slab
+tile.brown_pigmee_framed_building_slab.name=Brown Pigmee Framed Slab
+tile.green_pigmee_building_panel.name=Green Pigmee Plain Panel
+tile.green_pigmee_framed_building_panel.name=Green Pigmee Framed Panel
+tile.green_pigmee_building_slab.name=Green Pigmee Plain Slab
+tile.green_pigmee_framed_building_slab.name=Green Pigmee Framed Slab
+tile.red_pigmee_building_panel.name=Red Pigmee Plain Panel
+tile.red_pigmee_framed_building_panel.name=Red Pigmee Framed Panel
+tile.red_pigmee_building_slab.name=Red Pigmee Plain Slab
+tile.red_pigmee_framed_building_slab.name=Red Pigmee Framed Slab
+tile.black_pigmee_building_panel.name=Black Pigmee Plain Panel
+tile.black_pigmee_framed_building_panel.name=Black Pigmee Framed Panel
+tile.black_pigmee_building_slab.name=Black Pigmee Plain Slab
+tile.black_pigmee_framed_building_slab.name=Black Pigmee Framed Slab
+item.dye_base.name=Dye Base
+
+# --- Resonating pattern (right-click marking / scroll selection) ---
+
+# --- Resonating linker binding ---
+
+# --- Resonating memory card (9 slots) ---
+
+# --- Resonating pattern tooltip ---
+
+# 16 色猪咪
+# Color names
+item.pigmee_fumo_colored.name=Colored Pigmee
+tile.pigmee_fumo_colored.name=Colored Pigmee
+pigtech.fumo.colored_name=%s Pigmee
+pigtech.fumo.color.white=White
+pigtech.fumo.color.orange=Orange
+pigtech.fumo.color.magenta=Magenta
+pigtech.fumo.color.light_blue=Light Blue
+pigtech.fumo.color.yellow=Yellow
+pigtech.fumo.color.lime=Lime
+pigtech.fumo.color.pink=Pink
+pigtech.fumo.color.gray=Gray
+pigtech.fumo.color.light_gray=Light Gray
+pigtech.fumo.color.cyan=Cyan
+pigtech.fumo.color.purple=Purple
+pigtech.fumo.color.blue=Blue
+pigtech.fumo.color.brown=Brown
+pigtech.fumo.color.green=Green
+pigtech.fumo.color.red=Red
+pigtech.fumo.color.black=Black

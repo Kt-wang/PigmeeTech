@@ -1,0 +1,157 @@
+
+# Items
+# Pure Crystals (17 types)
+# Crystal Seeds (17 types)
+# Dusts
+# Tools - Ender
+
+# JEI
+
+# API - Machine Settings
+
+# API - Side Policy
+
+# API - Relative Side
+
+# API - Direction
+
+# GUI - Ender Broadcaster
+
+# GUI - Ender Emitter
+
+# 新增物品
+
+# 储存方块
+
+# GUI - 广播装置子菜单
+
+# 消息 - 频段链接
+
+# 消息 - 末影连接器
+
+# 消息 - 镜像/谐振供应器
+
+# 工具链接提示
+
+# Resonating Drive (placeholder)
+
+# Resonating Drive Settings
+
+# Pigmee Fumo（猪咪玩偶，移植自 ae2lt）
+itemGroup.pigtech.pigmee=猪咪科技
+tile.pigmee_fumo.name=猪咪
+tile.creative_pigmee_fumo.name=创造猪咪
+tooltip.pigtech.pigmee_fumo.1=你以为你总是一个猪，
+tooltip.pigtech.pigmee_fumo.2=结果转角就遇见另一只同样慢、同样软的小猪。
+tooltip.pigtech.pigmee_fumo.3=你们没说太多，但都不再害怕孤独。
+tooltip.pigtech.pigmee_fumo.4=祝你遇见属于自己的猪咪 —— MOAKIEE
+tooltip.pigtech.creative_pigmee_fumo.1=一只从古老砧板旁滚来的猪咪。
+tooltip.pigtech.creative_pigmee_fumo.2=在合成台中与一件物品结合，将其变为一整组。
+tooltip.pigtech.creative_pigmee_fumo.3=猪咪不会消失，物品数据也会完整保留。
+tooltip.pigtech.creative_pigmee_fumo.4=不过，它拿镜子里的自己毫无办法。
+tile.rainbow_pigmee_fumo.name=彩虹猪咪
+tooltip.pigtech.rainbow_pigmee_fumo.1=它把雨后的天空披在了身上。
+tooltip.pigtech.rainbow_pigmee_fumo.2=与一件可染色物品合成，依次切换16色；无色从白色开始。
+tooltip.pigtech.rainbow_pigmee_fumo.3=四件相同物品按染料配方摆放，可直接染成对应颜色。
+tooltip.pigtech.rainbow_pigmee_fumo.4=猪咪保留；仍可制作染料与猪咪建材。
+jei.pigtech.rainbow_pigmee.info=猪咪曾向一只流光溢彩的羊讨教名字的秘密。那天，天空响了一声。
+jei.pigtech.rainbow_pigmee.coloring=与一件可染色物品合成，按白、橙、品红、淡蓝、黄、黄绿、粉红、灰、淡灰、青、紫、蓝、棕、绿、红、黑循环。无色版本从白色开始。将四件完全相同且可堆叠的物品，放到对应染料配方的四个染料基底位置，可一次染出四件目标颜色物品，彩虹猪咪放中央并保留。皮革装备与潜影盒等不可堆叠物品使用单件换色。混合色皮革从最接近的MC颜色继续循环。支持具有完整16色变体的物品；无色版本通过等量染色配方识别。物品名称、附魔和储存内容会保留。
+
+# ---- Pigmee Building Materials ----
+tile.pigmee_building_block.name=猪咪建材方块
+tile.pigmee_building_slab.name=猪咪建材台阶
+tile.white_pigmee_building_panel.name=白色猪咪素板
+tile.white_pigmee_framed_building_panel.name=白色猪咪框板
+tile.white_pigmee_building_slab.name=白色猪咪素板台阶
+tile.white_pigmee_framed_building_slab.name=白色猪咪框板台阶
+tile.orange_pigmee_building_panel.name=橙色猪咪素板
+tile.orange_pigmee_framed_building_panel.name=橙色猪咪框板
+tile.orange_pigmee_building_slab.name=橙色猪咪素板台阶
+tile.orange_pigmee_framed_building_slab.name=橙色猪咪框板台阶
+tile.magenta_pigmee_building_panel.name=品红色猪咪素板
+tile.magenta_pigmee_framed_building_panel.name=品红色猪咪框板
+tile.magenta_pigmee_building_slab.name=品红色猪咪素板台阶
+tile.magenta_pigmee_framed_building_slab.name=品红色猪咪框板台阶
+tile.light_blue_pigmee_building_panel.name=淡蓝色猪咪素板
+tile.light_blue_pigmee_framed_building_panel.name=淡蓝色猪咪框板
+tile.light_blue_pigmee_building_slab.name=淡蓝色猪咪素板台阶
+tile.light_blue_pigmee_framed_building_slab.name=淡蓝色猪咪框板台阶
+tile.yellow_pigmee_building_panel.name=黄色猪咪素板
+tile.yellow_pigmee_framed_building_panel.name=黄色猪咪框板
+tile.yellow_pigmee_building_slab.name=黄色猪咪素板台阶
+tile.yellow_pigmee_framed_building_slab.name=黄色猪咪框板台阶
+tile.lime_pigmee_building_panel.name=黄绿色猪咪素板
+tile.lime_pigmee_framed_building_panel.name=黄绿色猪咪框板
+tile.lime_pigmee_building_slab.name=黄绿色猪咪素板台阶
+tile.lime_pigmee_framed_building_slab.name=黄绿色猪咪框板台阶
+tile.pink_pigmee_building_panel.name=粉红色猪咪素板
+tile.pink_pigmee_framed_building_panel.name=粉红色猪咪框板
+tile.pink_pigmee_building_slab.name=粉红色猪咪素板台阶
+tile.pink_pigmee_framed_building_slab.name=粉红色猪咪框板台阶
+tile.gray_pigmee_building_panel.name=灰色猪咪素板
+tile.gray_pigmee_framed_building_panel.name=灰色猪咪框板
+tile.gray_pigmee_building_slab.name=灰色猪咪素板台阶
+tile.gray_pigmee_framed_building_slab.name=灰色猪咪框板台阶
+tile.light_gray_pigmee_building_panel.name=淡灰色猪咪素板
+tile.light_gray_pigmee_framed_building_panel.name=淡灰色猪咪框板
+tile.light_gray_pigmee_building_slab.name=淡灰色猪咪素板台阶
+tile.light_gray_pigmee_framed_building_slab.name=淡灰色猪咪框板台阶
+tile.cyan_pigmee_building_panel.name=青色猪咪素板
+tile.cyan_pigmee_framed_building_panel.name=青色猪咪框板
+tile.cyan_pigmee_building_slab.name=青色猪咪素板台阶
+tile.cyan_pigmee_framed_building_slab.name=青色猪咪框板台阶
+tile.purple_pigmee_building_panel.name=紫色猪咪素板
+tile.purple_pigmee_framed_building_panel.name=紫色猪咪框板
+tile.purple_pigmee_building_slab.name=紫色猪咪素板台阶
+tile.purple_pigmee_framed_building_slab.name=紫色猪咪框板台阶
+tile.blue_pigmee_building_panel.name=蓝色猪咪素板
+tile.blue_pigmee_framed_building_panel.name=蓝色猪咪框板
+tile.blue_pigmee_building_slab.name=蓝色猪咪素板台阶
+tile.blue_pigmee_framed_building_slab.name=蓝色猪咪框板台阶
+tile.brown_pigmee_building_panel.name=棕色猪咪素板
+tile.brown_pigmee_framed_building_panel.name=棕色猪咪框板
+tile.brown_pigmee_building_slab.name=棕色猪咪素板台阶
+tile.brown_pigmee_framed_building_slab.name=棕色猪咪框板台阶
+tile.green_pigmee_building_panel.name=绿色猪咪素板
+tile.green_pigmee_framed_building_panel.name=绿色猪咪框板
+tile.green_pigmee_building_slab.name=绿色猪咪素板台阶
+tile.green_pigmee_framed_building_slab.name=绿色猪咪框板台阶
+tile.red_pigmee_building_panel.name=红色猪咪素板
+tile.red_pigmee_framed_building_panel.name=红色猪咪框板
+tile.red_pigmee_building_slab.name=红色猪咪素板台阶
+tile.red_pigmee_framed_building_slab.name=红色猪咪框板台阶
+tile.black_pigmee_building_panel.name=黑色猪咪素板
+tile.black_pigmee_framed_building_panel.name=黑色猪咪框板
+tile.black_pigmee_building_slab.name=黑色猪咪素板台阶
+tile.black_pigmee_framed_building_slab.name=黑色猪咪框板台阶
+item.dye_base.name=染料基底
+
+# --- 谐振样板（右键标记 / 滚轮选槽）---
+
+# --- 谐振链接器绑定 ---
+
+# --- 谐振记忆卡（9 槽） ---
+
+# --- 谐振样板 tooltip ---
+
+# 16 色猪咪
+# 颜色名称
+item.pigmee_fumo_colored.name=彩色猪咪
+tile.pigmee_fumo_colored.name=彩色猪咪
+pigtech.fumo.colored_name=%s猪咪
+pigtech.fumo.color.white=白色
+pigtech.fumo.color.orange=橙色
+pigtech.fumo.color.magenta=品红色
+pigtech.fumo.color.light_blue=淡蓝色
+pigtech.fumo.color.yellow=黄色
+pigtech.fumo.color.lime=黄绿色
+pigtech.fumo.color.pink=粉红色
+pigtech.fumo.color.gray=灰色
+pigtech.fumo.color.light_gray=淡灰色
+pigtech.fumo.color.cyan=青色
+pigtech.fumo.color.purple=紫色
+pigtech.fumo.color.blue=蓝色
+pigtech.fumo.color.brown=棕色
+pigtech.fumo.color.green=绿色
+pigtech.fumo.color.red=红色
+pigtech.fumo.color.black=黑色

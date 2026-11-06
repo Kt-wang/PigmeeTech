@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "pigtech:rainbow_pigmee_fumo" },
+    "facing=south": { "model": "pigtech:rainbow_pigmee_fumo", "y": 180 },
+    "facing=west": { "model": "pigtech:rainbow_pigmee_fumo", "y": 270 },
+    "facing=east": { "model": "pigtech:rainbow_pigmee_fumo", "y": 90 }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "pigtech:block/pigmee_fumo",
+  "textures": {
+    "0": "pigtech:block/creative_pigmee_fumo",
+    "particle": "pigtech:block/creative_pigmee_fumo"
+  }
+}

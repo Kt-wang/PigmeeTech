@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "pigmeeBuildingSlabs"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "pigmeeBuildingSlabs"
+    }
+  ],
+  "result": {
+    "item": "pigtech:pigmee_building_block",
+    "count": 1
+  }
+}

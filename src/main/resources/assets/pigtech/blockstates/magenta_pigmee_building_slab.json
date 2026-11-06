@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=bottom,variant=default": {
+      "model": "pigtech:magenta_pigmee_building_slab_bottom"
+    },
+    "half=top,variant=default": {
+      "model": "pigtech:magenta_pigmee_building_slab_top"
+    }
+  }
+}

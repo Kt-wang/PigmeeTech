@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "type": "forge:ore_dict",
+      "ore": "pigmeeFumo"
+    },
+    {
+      "type": "forge:ore_dict",
+      "ore": "dyeBlue"
+    }
+  ],
+  "result": {
+    "item": "pigtech:pigmee_fumo_colored",
+    "data": 11,
+    "count": 1
+  }
+}
