@@ -1,35 +1,37 @@
-AE2 Crystal Science: Legacy
-===========================
+Pigmee Tech
+===========
 
-This is an unofficial Minecraft 1.12.2 / Cleanroom port of Applied
-Energistics: Crystal Science. It is not affiliated with or endorsed by the
-original AECS authors or the Applied Energistics 2 team.
+This is an unofficial Minecraft 1.12.2 / Cleanroom port of the pigmee
+subsystem of AE2 Lightning Tech. It is not affiliated with or endorsed by the
+AE2 Lightning Tech authors, the Applied Energistics: Crystal Science authors,
+or the Applied Energistics 2 team.
 
-Upstream project
-----------------
+Upstream projects
+-----------------
 
-Applied Energistics: Crystal Science
-https://github.com/Frostbite-time/AE2-Crystal-Science
+AE2 Lightning Tech (AE2 Lightning Tech Reborn, "AE2LT")
+https://modrinth.com/mod/ae2-lightning-tech
 
-Original code:
-- Copyright (c) 2026 Frostbite-time
-- Copyright (c) 2026 Lounode
-
-Original textures:
-- Copyright (c) 2026 MHanHanBing
-
-Original 3D models:
+Original pigmee code and assets:
+- Copyright (c) 2026 MOAKIEE
+- Copyright (c) 2026 CystrySU
+- Copyright (c) 2026 gjmhmm8
+- Copyright (c) 2026 _leng
 - Copyright (c) 2026 TedXenon
+- Copyright (c) 2026 MHanHanBing
 
 Port
 ----
 
-Minecraft 1.12.2 port and modifications:
+Minecraft 1.12.2 port, Cleanroom adaptation, and subsequent modifications:
 - Copyright (c) 2026 KleinBlue
 
-The port changes APIs and implementation details for Minecraft 1.12.2,
-Cleanroom Loader, Forge's ore dictionary, NBT-based item data, legacy GUI and
-networking APIs, and AE2 Supergiant compatibility.
+The port rewrites the 1.21.1 NeoForge implementation against 1.12.2 Forge APIs:
+block/state/metadata registration, tile entities and TESRs, the 1.12.2 model
+and CTM pipeline, Forge's ore dictionary, NBTTagCompound item data, legacy GUI
+and networking, and 1.12.2 recipe registration. The project scaffolding follows
+the conventions of AE2 Crystal Science: Legacy
+(https://github.com/Kt-wang/AE2-Crystal-Science-Legacy).
 
 Related upstream work
 ---------------------
@@ -38,8 +40,11 @@ Applied Energistics 2
 https://github.com/AppliedEnergistics/Applied-Energistics-2
 Copyright (c) 2013-2020 AlgorithmX2 et al.
 
-Applied Energistics 2 Supergiant
+Applied Energistics 2 Supergiant (1.12.2 Cleanroom branch, required dependency)
 https://github.com/FormlessDragon/Applied-Energistics-2-Supergiant
+
+Applied Energistics: Crystal Science
+https://github.com/Frostbite-time/AE2-Crystal-Science
 
 License summary
 ---------------
@@ -47,4 +52,5 @@ License summary
 - Source code: LGPL-3.0-or-later
 - Textures and models: CC BY-NC-SA 3.0
 
-See LICENSE and LICENSES/ for the applicable terms and complete license texts.
+See LICENSE, LICENSE_ASSETS.md and LICENSES/ for the applicable terms and
+complete license texts.

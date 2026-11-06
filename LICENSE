@@ -1,10 +1,11 @@
-AE2 Crystal Science: Legacy — Licensing Overview
-================================================
+Pigmee Tech — Licensing Overview
+=================================
 
-This project is an unofficial Minecraft 1.12.2 port of Applied Energistics:
-Crystal Science (AECS). It uses a multi-license structure. Different portions
-of the project are governed by different licenses; this overview does not
-replace the complete license texts in the LICENSES directory.
+Pigmee Tech (mod id: `pigtech`) is an unofficial Minecraft 1.12.2 / Cleanroom
+port of the pigmee subsystem of AE2 Lightning Tech (AE2LT). It uses a
+multi-license structure: different portions of the project are governed by
+different licenses, and this overview does not replace the complete license
+texts in the LICENSES directory.
 
 1. Source code
 --------------
@@ -17,9 +18,13 @@ Applies to:
 - Source-derived scripts and implementation files, unless a file carries a
   different license notice
 
-Original AECS code:
-- Copyright (c) 2026 Frostbite-time
-- Copyright (c) 2026 Lounode
+Original pigmee implementation (AE2 Lightning Tech, 1.21.1):
+- Copyright (c) 2026 MOAKIEE
+- Copyright (c) 2026 CystrySU
+- Copyright (c) 2026 gjmhmm8
+- Copyright (c) 2026 _leng
+- Copyright (c) 2026 TedXenon
+- Copyright (c) 2026 MHanHanBing
 
 Minecraft 1.12.2 port and subsequent modifications:
 - Copyright (c) 2026 KleinBlue
@@ -38,13 +43,13 @@ License: Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported
 (SPDX: CC-BY-NC-SA-3.0)
 
 Applies to copied, modified, or derived texture and model assets under:
-- src/main/resources/assets/ae2csl/textures/
-- src/main/resources/assets/ae2csl/models/
+- src/main/resources/assets/pigtech/textures/
+- src/main/resources/assets/pigtech/models/
 
-Original AECS texture attribution:
+Original pigmee texture attribution (AE2 Lightning Tech):
 - Copyright (c) 2026 MHanHanBing
 
-Original AECS 3D model attribution:
+Original pigmee 3D model attribution (AE2 Lightning Tech):
 - Copyright (c) 2026 TedXenon
 
 AE2-derived texture and model attribution:
@@ -61,6 +66,8 @@ shared under the same CC BY-NC-SA 3.0 license.
 The complete license text is available at:
 - LICENSES/CC-BY-NC-SA-3.0.txt
 
+A short attribution summary is kept in LICENSE_ASSETS.md.
+
 3. Other third-party material
 -----------------------------
 
@@ -68,17 +75,22 @@ Third-party files retain their original copyright and license notices. This
 project does not relicense third-party material. The primary upstream sources
 are:
 
-- Applied Energistics: Crystal Science
-  https://github.com/Frostbite-time/AE2-Crystal-Science
+- AE2 Lightning Tech (AE2LT)
+  https://modrinth.com/mod/ae2-lightning-tech
 - Applied Energistics 2
   https://github.com/AppliedEnergistics/Applied-Energistics-2
 - Applied Energistics 2 Supergiant
   https://github.com/FormlessDragon/Applied-Energistics-2-Supergiant
 
+The 1.12.2 Cleanroom scaffolding follows the conventions of
+AE2 Crystal Science: Legacy
+(https://github.com/Kt-wang/AE2-Crystal-Science-Legacy), whose porting work is
+credited in NOTICE.
+
 See NOTICE for attribution and modification information.
 
 4. Distribution notice
------------------------
+----------------------
 
 Redistribution of this port, in source or binary form, must comply with the
 license applicable to each portion. In particular, preserve copyright and
