@@ -29,11 +29,13 @@ import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.common.Optional;
 
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class FumoItemBlock extends ItemBlock {
+@Optional.Interface(iface = "baubles.api.IBauble", modid = "baubles")
+public class FumoItemBlock extends ItemBlock implements baubles.api.IBauble {
 
     private final String tooltipKey;
     private final EnumRarity rarity;
@@ -52,6 +54,13 @@ public class FumoItemBlock extends ItemBlock {
     @Override
     public boolean isValidArmor(ItemStack stack, EntityEquipmentSlot armorType, Entity entity) {
         return armorType == EntityEquipmentSlot.HEAD;
+    }
+
+    /** Optional accessory equipment uses Baubles' own head-slot validation. */
+    @Optional.Method(modid = "baubles")
+    @Override
+    public baubles.api.BaubleType getBaubleType(ItemStack stack) {
+        return baubles.api.BaubleType.HEAD;
     }
 
     /**

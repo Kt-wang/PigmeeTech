@@ -37,4 +37,6 @@ dependencies {
     modRuntimeOnly 'mezz:jei:4.35.1'
     // Optional fluid integration. The independent runtime is only loaded when installed.
     modCompileOnly('curse.maven:farmers-future-delight-1637097:9187601') { transitive = false }
+    // Optional head-slot equipment; the runtime stays independently installed.
+    modCompileOnly('curse.maven:baubles-227083:2518667') { transitive = false }
 }
