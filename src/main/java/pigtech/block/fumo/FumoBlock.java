@@ -3,7 +3,7 @@
  * Port of ae2lt 1.21.1 com.moakiee.ae2lt.block.FumoBlock.
  *
  * 猪咪玩偶方块：可朝向、羊毛手感、右键切换旋转（由 TileFumo + FumoTESR 驱动）。
- * 1.12.2 没有含水方块机制，源码的 WATERLOGGED 属性无法移植，其余行为全部保留。
+ * 含水状态存于空闲 metadata；安装 Farmer's Future Delight 时接入其流体与渲染 API。
  */
 package pigtech.block.fumo;
 
@@ -47,29 +47,33 @@ public class FumoBlock extends Block {
         super(Material.CLOTH);
         this.setSoundType(SoundType.CLOTH);
         this.setHardness(0.5F);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH)
+                .withProperty(pigtech.integration.PigmeeWaterlogging.WATERLOGGED, false));
     }
 
     @Override
     protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, FACING);
+        return new BlockStateContainer(this, FACING, pigtech.integration.PigmeeWaterlogging.WATERLOGGED);
     }
 
     @Override
     public int getMetaFromState(IBlockState state) {
-        return state.getValue(FACING).getHorizontalIndex();
+        return state.getValue(FACING).getHorizontalIndex() | (pigtech.integration.PigmeeWaterlogging.wet(state) ? 4 : 0);
     }
 
     @Override
     public IBlockState getStateFromMeta(int meta) {
-        return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta & 3));
+        return this.getDefaultState().withProperty(FACING, EnumFacing.byHorizontalIndex(meta & 3))
+                .withProperty(pigtech.integration.PigmeeWaterlogging.WATERLOGGED, (meta & 4) != 0);
     }
 
     @Override
     public IBlockState getStateForPlacement(World world, BlockPos pos, EnumFacing facing,
                                             float hitX, float hitY, float hitZ, int meta,
                                             EntityLivingBase placer) {
-        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+        return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite())
+                .withProperty(pigtech.integration.PigmeeWaterlogging.WATERLOGGED,
+                        pigtech.integration.PigmeeWaterlogging.sourceAt(world, pos));
     }
 
     @Override
@@ -181,5 +185,21 @@ public class FumoBlock extends Block {
     @Nullable
     public TileEntity createTileEntity(World world, IBlockState state) {
         return new TileFumo();
+    }
+
+    @Override public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+        super.onBlockAdded(world, pos, state);
+        if (pigtech.integration.PigmeeWaterlogging.hooks != null) pigtech.integration.PigmeeWaterlogging.hooks.added(world, pos, state);
+    }
+    @Override public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos from) {
+        super.neighborChanged(state, world, pos, block, from);
+        if (pigtech.integration.PigmeeWaterlogging.hooks != null) pigtech.integration.PigmeeWaterlogging.hooks.neighbor(world, pos, state);
+    }
+    @Override public void updateTick(World world, BlockPos pos, IBlockState state, java.util.Random random) {
+        if (pigtech.integration.PigmeeWaterlogging.hooks != null) pigtech.integration.PigmeeWaterlogging.hooks.tick(world, pos, state);
+    }
+    @Override public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        super.breakBlock(world, pos, state);
+        pigtech.integration.PigmeeWaterlogging.restore(world, pos, state);
     }
 }

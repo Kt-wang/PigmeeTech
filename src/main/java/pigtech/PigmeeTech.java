@@ -21,7 +21,7 @@ import org.apache.logging.log4j.Logger;
  * 需要 AE2（染料基底配方使用 ae2:silicon）；包含猪咪玩偶、猪咪建材与彩虹猪咪换色。
  */
 @Mod(modid = Tags.MOD_ID, name = Tags.MOD_NAME, version = Tags.VERSION,
-    acceptedMinecraftVersions = "[1.12.2]", dependencies = "required-after:ae2")
+    acceptedMinecraftVersions = "[1.12.2]", dependencies = "required-after:ae2;after:farmers_future_delight;after:baubles")
 public class PigmeeTech {
 
     public static final Logger LOGGER = LogManager.getLogger(Tags.MOD_NAME);

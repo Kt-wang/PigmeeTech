@@ -11,11 +11,14 @@ import pigtech.client.render.FumoTESR;
 import pigtech.client.render.RainbowPigmeeTEISR;
 import pigtech.client.render.model.SpinningFumoBakedModel;
 import pigtech.init.PigmeeBlocks;
+import pigtech.integration.PigmeeWaterlogging;
 import pigtech.tile.fumo.TileFumo;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.IBakedModel;
 import net.minecraft.client.renderer.block.model.ItemCameraTransforms;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.ModelBakeEvent;
@@ -43,6 +46,7 @@ public class PigmeeClientProxy extends CommonProxy {
 
     @Override
     public void init(FMLInitializationEvent event) {
+        super.init(event);
         // 猪咪玩偶：旋转动画渲染器
         ClientRegistry.bindTileEntitySpecialRenderer(TileFumo.class, new FumoTESR());
         // 彩虹猪咪：物品形态由 TEISR 渲染（shader 色带 + 面部标记，对齐源码）
@@ -52,6 +56,15 @@ public class PigmeeClientProxy extends CommonProxy {
 
     @SubscribeEvent
     public void onModelRegistry(ModelRegistryEvent event) {
+        // 含水方块需要忽略水化属性，否则找不到对应的 blockstate 模型
+        for (Block block : ForgeRegistries.BLOCKS.getValuesCollection()) {
+            ResourceLocation rl = block.getRegistryName();
+            if (rl != null && rl.toString().startsWith(Tags.MOD_ID + ":")
+                    && block.getDefaultState().getPropertyKeys().contains(PigmeeWaterlogging.WATERLOGGED)) {
+                ModelLoader.setCustomStateMapper(block,
+                        new StateMap.Builder().ignore(PigmeeWaterlogging.WATERLOGGED).build());
+            }
+        }
         // 16 色猪咪：每个 metadata 都要注册同一个 inventory 模型
         Item coloredFumo = Item.getItemFromBlock(PigmeeBlocks.PIGMEE_FUMO_COLORED);
         ModelResourceLocation coloredMrl = new ModelResourceLocation(Tags.MOD_ID + ":pigmee_fumo_colored", "inventory");

@@ -29,6 +29,7 @@ import net.minecraftforge.common.property.IUnlistedProperty;
 import pigtech.client.ctm.ConnectionPredicates;
 import pigtech.client.ctm.CtmConnectionState;
 import pigtech.client.ctm.PigmeeCtm;
+import pigtech.integration.PigmeeWaterlogging;
 
 import java.util.Random;
 
@@ -61,7 +62,8 @@ public abstract class PigmeeBuildingSlabBlock extends BlockSlab {
 
         IBlockState state = this.blockState.getBaseState();
         if (!this.isDouble()) {
-            state = state.withProperty(HALF, EnumBlockHalf.BOTTOM);
+            state = state.withProperty(HALF, EnumBlockHalf.BOTTOM)
+                    .withProperty(pigtech.integration.PigmeeWaterlogging.WATERLOGGED, false);
         }
         this.setDefaultState(state);
     }
@@ -85,7 +87,7 @@ public abstract class PigmeeBuildingSlabBlock extends BlockSlab {
     protected BlockStateContainer createBlockState() {
         // 扩展状态容器：listed(HALF+VARIANT 或仅 VARIANT) + unlisted(CTM 连接数据)
         return new ExtendedBlockState(this,
-                this.isDouble() ? new IProperty[]{VARIANT} : new IProperty[]{HALF, VARIANT},
+                this.isDouble() ? new IProperty[]{VARIANT} : new IProperty[]{HALF, VARIANT, PigmeeWaterlogging.WATERLOGGED},
                 new IUnlistedProperty[]{PigmeeCtm.CONNECTION});
     }
 
@@ -107,7 +109,8 @@ public abstract class PigmeeBuildingSlabBlock extends BlockSlab {
     public IBlockState getStateFromMeta(int meta) {
         IBlockState state = this.getDefaultState();
         if (!this.isDouble()) {
-            state = state.withProperty(HALF, meta == 8 ? EnumBlockHalf.TOP : EnumBlockHalf.BOTTOM);
+            state = state.withProperty(HALF, (meta & 8) != 0 ? EnumBlockHalf.TOP : EnumBlockHalf.BOTTOM)
+                    .withProperty(pigtech.integration.PigmeeWaterlogging.WATERLOGGED, (meta & 4) != 0);
         }
         return state;
     }
@@ -117,7 +120,30 @@ public abstract class PigmeeBuildingSlabBlock extends BlockSlab {
         if (this.isDouble()) {
             return 0;
         }
-        return state.getValue(HALF) == EnumBlockHalf.TOP ? 8 : 0;
+        return (state.getValue(HALF) == EnumBlockHalf.TOP ? 8 : 0)
+                | (pigtech.integration.PigmeeWaterlogging.wet(state) ? 4 : 0);
+    }
+
+    @Override public IBlockState getStateForPlacement(World world, BlockPos pos, net.minecraft.util.EnumFacing facing,
+            float hitX, float hitY, float hitZ, int meta, net.minecraft.entity.EntityLivingBase placer) {
+        IBlockState state = super.getStateForPlacement(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+        return isDouble() ? state : state.withProperty(pigtech.integration.PigmeeWaterlogging.WATERLOGGED,
+                pigtech.integration.PigmeeWaterlogging.sourceAt(world, pos));
+    }
+    @Override public void onBlockAdded(World world, BlockPos pos, IBlockState state) {
+        super.onBlockAdded(world, pos, state);
+        if (pigtech.integration.PigmeeWaterlogging.hooks != null) pigtech.integration.PigmeeWaterlogging.hooks.added(world, pos, state);
+    }
+    @Override public void neighborChanged(IBlockState state, World world, BlockPos pos, net.minecraft.block.Block block, BlockPos from) {
+        super.neighborChanged(state, world, pos, block, from);
+        if (pigtech.integration.PigmeeWaterlogging.hooks != null) pigtech.integration.PigmeeWaterlogging.hooks.neighbor(world, pos, state);
+    }
+    @Override public void updateTick(World world, BlockPos pos, IBlockState state, java.util.Random random) {
+        if (pigtech.integration.PigmeeWaterlogging.hooks != null) pigtech.integration.PigmeeWaterlogging.hooks.tick(world, pos, state);
+    }
+    @Override public void breakBlock(World world, BlockPos pos, IBlockState state) {
+        super.breakBlock(world, pos, state);
+        pigtech.integration.PigmeeWaterlogging.restore(world, pos, state);
     }
 
     @Override

@@ -45,6 +45,9 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class RainbowColoring {
 
     private static final EnumDyeColor[] COLORS = EnumDyeColor.values();
+    // getColorValue() is @SideOnly(CLIENT) in 1.12.2. Crafting also runs on a physical server.
+    private static final java.lang.reflect.Field COLOR_VALUE = net.minecraftforge.fml.relauncher.ReflectionHelper
+            .findField(EnumDyeColor.class, "colorValue", "field_193351_w");
 
     /** 矿物词典染料名（按 EnumDyeColor 元数据序；1.12.2 的"淡灰"注册名是 silver） */
     private static final String[] DYE_ORE_NAMES = {
@@ -87,8 +90,13 @@ public final class RainbowColoring {
                     : EnumDyeColor.WHITE;
             ItemStack result = input.copy();
             result.setCount(1);
-            armor.setColor(result, target.getColorValue());
+            armor.setColor(result, colorValue(target));
             return result;
+        }
+        if (input.getItem() == net.minecraft.init.Items.SHIELD) {
+            net.minecraft.nbt.NBTTagCompound tag = input.getSubCompound("BlockEntityTag");
+            return color(input, tag != null && tag.hasKey("Base", 99)
+                    ? nextColor(EnumDyeColor.byDyeDamage(tag.getInteger("Base"))) : EnumDyeColor.WHITE, 1);
         }
         Variant variant = resolve(input);
         if (variant == null) {
@@ -108,7 +116,7 @@ public final class RainbowColoring {
         EnumDyeColor nearest = EnumDyeColor.WHITE;
         int distance = Integer.MAX_VALUE;
         for (EnumDyeColor color : COLORS) {
-            int candidate = color.getColorValue();
+            int candidate = colorValue(color);
             int red = ((rgb >> 16) & 255) - ((candidate >> 16) & 255);
             int green = ((rgb >> 8) & 255) - ((candidate >> 8) & 255);
             int blue = (rgb & 255) - (candidate & 255);
@@ -125,6 +133,34 @@ public final class RainbowColoring {
         return stack.getItem() instanceof ItemArmor
                 && ((ItemArmor) stack.getItem()).getArmorMaterial() == ItemArmor.ArmorMaterial.LEATHER;
     }
+
+    private static int colorValue(EnumDyeColor color) {
+        try { return COLOR_VALUE.getInt(color); }
+        catch (IllegalAccessException failure) { throw new IllegalStateException("Cannot read native dye color", failure); }
+    }
+
+    /** Recolor existing items in a fixed dye layout, retaining their data and stack limits. */
+    public static ItemStack color(ItemStack input, EnumDyeColor color, int count) {
+        if (input.isEmpty() || count <= 0) return ItemStack.EMPTY;
+        ItemStack result;
+        if (isDyeableLeather(input)) {
+            result = input.copy();
+            ((ItemArmor) result.getItem()).setColor(result, colorValue(color));
+        } else if (input.getItem() == net.minecraft.init.Items.SHIELD) {
+            result = input.copy();
+            result.getOrCreateSubCompound("BlockEntityTag").setInteger("Base", color.getDyeDamage());
+        } else {
+            Variant variant = resolve(input);
+            if (variant == null) return ItemStack.EMPTY;
+            result = withVariant(input, variant.items[color.getMetadata()]);
+        }
+        if (count > result.getMaxStackSize()) return ItemStack.EMPTY;
+        result.setCount(count);
+        return result;
+    }
+
+    /** Rebuild recipe-derived uncolored families after integrations update native recipes. */
+    public static void invalidateRecipes() { uncolored = null; }
 
     /** 换到变体族里的另一件物品，保留数量以外的全部 NBT（名称、附魔、容器内容） */
     private static ItemStack withVariant(ItemStack input, ItemStack variantStack) {
@@ -174,6 +210,11 @@ public final class RainbowColoring {
      */
     @Nullable
     private static Variant metaFamily(ItemStack stack) {
+        if (stack.getItem() == net.minecraft.init.Items.BED) {
+            ItemStack[] items = new ItemStack[COLORS.length];
+            for (EnumDyeColor color : COLORS) items[color.getMetadata()] = new ItemStack(stack.getItem(), 1, color.getMetadata());
+            return new Variant(items, EnumDyeColor.byMetadata(stack.getMetadata() & 15));
+        }
         if (!(stack.getItem() instanceof ItemBlock)) {
             return null;
         }
@@ -267,7 +308,9 @@ public final class RainbowColoring {
             if (recipe.isDynamic() || recipe instanceof RecipeRainbowPigmeeCycle) {
                 continue;
             }
-            if (!(recipe instanceof ShapedRecipes || recipe instanceof ShapelessRecipes)) {
+            if (!(recipe instanceof ShapedRecipes || recipe instanceof ShapelessRecipes
+                    || recipe instanceof net.minecraftforge.oredict.ShapedOreRecipe
+                    || recipe instanceof net.minecraftforge.oredict.ShapelessOreRecipe)) {
                 continue;
             }
             ItemStack output = recipe.getRecipeOutput();

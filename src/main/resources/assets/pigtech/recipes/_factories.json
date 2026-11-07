@@ -1,0 +1,5 @@
+{
+  "recipes": {
+    "rainbow_pigmee_dye": "pigtech.recipe.RecipeRainbowPigmeeDye$Factory"
+  }
+}

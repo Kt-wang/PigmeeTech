@@ -10,6 +10,8 @@ public class CommonProxy {
     }
 
     public void init(FMLInitializationEvent event) {
+        if (net.minecraftforge.fml.common.Loader.isModLoaded("farmers_future_delight"))
+            pigtech.integration.ffd.FarmersFutureWaterlogging.initialize();
     }
 
     public void postInit(FMLPostInitializationEvent event) {
